@@ -22,7 +22,7 @@ class Menu extends Phaser.Scene{
        // this.title = this.add.tileSprite(0, 0, 640, 480, 'title').setOrigin(0, 0);
         this.add.text(game.config.width/2, game.config.height/2+100, 'Use ←→ arrows to control the character', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize+borderPadding+100, 'Press P to start', menuConfig).setOrigin(0.5);
-        keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+        keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
     }
 
     update(){
