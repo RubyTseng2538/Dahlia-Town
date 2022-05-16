@@ -32,8 +32,8 @@ class Town extends Phaser.Scene{
         //cursor
         cursors = this.input.keyboard.createCursorKeys();
 
-        this.player = this.physics.add.sprite(800, 448, 'mc').setScale(0.5);
         this.npc = this.physics.add.sprite(600, 448, 'char2').setScale(0.5);
+        this.player = this.physics.add.sprite(800, 448, 'mc').setScale(0.5);
         this.physics.add.collider(this.player, this.ground);
         this.physics.add.collider(this.npc, this.ground);
         /*let musicConfig = {
@@ -51,6 +51,8 @@ class Town extends Phaser.Scene{
         //this.goodEnding = false;
         this.f = this.add.image(600, 450,'f').setScale(0.5);
         this.f.visible = false;
+        this.text01 = new Textbox(this, 0, 0, 'textbox');
+        this.text01.visible = false;
 
             
     }
@@ -81,7 +83,8 @@ class Town extends Phaser.Scene{
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 //textbox code
-                ;
+                /*this.text01.visible = true;
+                this.add.text(50, 528, "aHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");*/
             }
         }if(!this.checkCollision(this.player, this.npc)){
             this.f.visible = false;
