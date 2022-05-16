@@ -15,7 +15,7 @@ create the sprites with the goal of making the animals recognizable and a bit re
 */
 
 let config = {
-    type: Phaser.CANVAS,
+    type: Phaser.WEBGL,
     width: 1280,
     height: 720,
     physics: {

@@ -1,4 +1,4 @@
-class Play extends Phaser.Scene{
+class Town extends Phaser.Scene{
     constructor(){
         super("townScene");
     }
@@ -8,7 +8,7 @@ class Play extends Phaser.Scene{
 
     create(){
         this.camera.main.setBounds(0, 0, game.config.width, game.config.height);
-        this.add.tileSprite(0, 0, x, y, 'map').setOrigin(0);
+        this.add.tileSprite(0, 0, x, y, 'bg').setOrigin(0);
         this.cameras.main.setZoom(1);
         this.cameras.main.centerOn(0, 0);
 
@@ -23,6 +23,10 @@ class Play extends Phaser.Scene{
 
         //cursor
         cursors = this.input.keyboard.createCursorKeys();
+
+        this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'char1').setScale(0.5);
+        this.npc = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'char2').setScale(0.5);
+        this.physics.add.collider(this.player, this.ground);
         /*let musicConfig = {
             mute: false,
             volume: 0.2,
@@ -40,19 +44,18 @@ class Play extends Phaser.Scene{
         //this.goodEnding = false;
     }
     update(){
-        if(Phaser.Input.Keyboard.JustDown(keyF) && ()){
+        /*if(Phaser.Input.Keyboard.JustDown(keyF) && (this.checkCollision(player, factory))){
             this.scene.start("factoryScene");
         }
-        if(Phaser.Input.Keyboard.JustDown(keyF) && ()){
+        if(Phaser.Input.Keyboard.JustDown(keyF) && (this.checkCollision(player, factory))){
             this.scene.start("alleyScene");
         }
-        if(Phaser.Input.Keyboard.JustDown(keyF) && ()){
+        if(Phaser.Input.Keyboard.JustDown(keyF) && (this.checkCollision(player, factory))){
             this.scene.start("woodsScene");
-        }
-        /*if(this.checkCollision(this.pShrimp, this.rockObs)){
-            this.sound.play('chomp');
-            this.gameOver = true;
         }*/
+        if(this.checkCollision(this.player, this.npc)){
+            ;
+        }
         
     }
 
