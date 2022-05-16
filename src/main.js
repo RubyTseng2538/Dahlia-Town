@@ -13,6 +13,7 @@ For the art, multiple art programs were used to create the visual assets. There 
 plastic bag which took some creativity to crop and edit. Many reference pictures of sea creatures were pulled up to 
 create the sprites with the goal of making the animals recognizable and a bit realistic.
 */
+'use strict';
 
 let config = {
     type: Phaser.WEBGL,
@@ -32,7 +33,7 @@ let config = {
     woods: 0,
     alley: 0,
     scene: [Load, Menu, Town, Credit]
-}
+};
 
 let game = new Phaser.Game(config);
 let cursors;
