@@ -14,7 +14,6 @@ plastic bag which took some creativity to crop and edit. Many reference pictures
 create the sprites with the goal of making the animals recognizable and a bit realistic.
 */
 'use strict';
-
 let config = {
     type: Phaser.WEBGL,
     width: 1280,
@@ -37,4 +36,4 @@ let config = {
 
 let game = new Phaser.Game(config);
 let cursors;
-let keyF;
+let keyF, keyN;

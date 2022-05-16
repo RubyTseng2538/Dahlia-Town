@@ -2,7 +2,6 @@ class Town extends Phaser.Scene{
     constructor(){
         super("townScene");
     }
-
     create(){
         const gui = new dat.GUI();
         this.width = 1280;
@@ -51,8 +50,19 @@ class Town extends Phaser.Scene{
         //this.goodEnding = false;
         this.f = this.add.image(600, 450,'f').setScale(0.5);
         this.f.visible = false;
-        this.text01 = new Textbox(this, 0, 0, 'textbox');
+        this.pfp1 = this.add.image(200, 300, 'p1').setOrigin(0);
+        this.pfp2 = this.add.image(850, 300, 'p2').setOrigin(0);
+        this.text01 = new Textbox(this, 130, 500, 'textbox').setOrigin(0);
+        this.text01msg = this.add.text(150, 520, "AHHHHHHHHHHHHHHHHHHHHH");
+        this.text02msg = this.add.text(150, 520, "gurrrrrrrrrr");
+        this.text01msg.visible = false;
+        this.text02msg.visible = false;
+        this.pfp1.visible = false;
+        this.pfp2.visible = false;
         this.text01.visible = false;
+        keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+        keyN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.N);
+        this.first = false;
 
             
     }
@@ -81,13 +91,27 @@ class Town extends Phaser.Scene{
         }*/
         if(this.checkCollision(this.player, this.npc)){
             this.f.visible = true;
-            if(Phaser.Input.Keyboard.JustDown(keyF)){
+            if(Phaser.Input.Keyboard.JustDown(keyF) && this.first == false){
                 //textbox code
-                /*this.text01.visible = true;
-                this.add.text(50, 528, "aHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");*/
+                this.first = true;
+                this.text01.visible = true;
+                this.text01msg.visible = true;
+                this.pfp1.visible = true;
+            }if(Phaser.Input.Keyboard.JustDown(keyN) && this.first == true){
+                this.text01msg.visible = false;
+                this.text02msg.visible = true;
+                this.pfp1.visible = false;
+                this.pfp2.visible = true;
             }
         }if(!this.checkCollision(this.player, this.npc)){
             this.f.visible = false;
+        }if(Phaser.Input.Keyboard.JustDown(keyF) &&this.first == true){
+            this.first = false;
+            this.text01.visible = false;
+            this.text01msg.visible = false;
+            this.text02msg.visible = false;
+            this.pfp1.visible = false;
+            this.pfp2.visible = false;
         }
         
     }
@@ -101,5 +125,12 @@ class Town extends Phaser.Scene{
         }else{
             return false;
         }
+    }
+
+    textDestroy(textbox, textmsg){
+        textbox.visible = false;
+        textmsg.visible = false;
+        textbox.destroy();
+        textmsg.destroy();
     }
 }
