@@ -8,9 +8,9 @@ class Town extends Phaser.Scene{
         this.height = 720;
         this.VELOCITY = 200;
         this.cameras.main.setBackgroundColor('#666');
-        this.cameras.main.setBounds(0, 0, 1280, this.height);
+        this.cameras.main.setBounds(0, 0, 1400, this.height);
         this.cameras.main.setZoom(1);
-        this.cameras.main.setScroll(this.width, this.height);
+        this.cameras.main.setScroll(0, this.height);
 
         gui.addFolder("Main Camera");
         gui.add(this.cameras.main, 'scrollX');
@@ -26,13 +26,18 @@ class Town extends Phaser.Scene{
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
 
-        //keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
 
         //cursor
         cursors = this.input.keyboard.createCursorKeys();
+        keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+        keyN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.N);
+        keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 
         this.npc = this.physics.add.sprite(600, 448, 'char2').setScale(0.5);
-        this.player = this.physics.add.sprite(800, 448, 'mc').setScale(0.5);
+        this.player = this.physics.add.sprite(200, 448, 'mc').setScale(0.5);
+        this.player.body.setCollideWorldBounds(true);
+        this.player.body.onWorldBounds = true;   
+        this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.ground);
         this.physics.add.collider(this.npc, this.ground);
         let musicConfig = {
@@ -60,18 +65,14 @@ class Town extends Phaser.Scene{
         this.pfp1.visible = false;
         this.pfp2.visible = false;
         this.text01.visible = false;
-        keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
-        keyN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.N);
-        this.first = false;
-
-            
+        this.first = false; 
     }
     update(){
-        if(cursors.left.isDown) {
+        if(cursors.left.isDown && this.first == false) {
             this.player.body.setVelocityX(-this.VELOCITY);
             //this.player.anims.play('run_left', true);
 
-        } else if(cursors.right.isDown) {
+        } else if(cursors.right.isDown && this.first == false) {
             this.player.body.setVelocityX(this.VELOCITY);
             //this.player.anims.play('run_right', true);
 
@@ -92,7 +93,7 @@ class Town extends Phaser.Scene{
             this.scene.start("woodsScene");
             music.stop();
         }*/
-        if(this.checkCollision(this.player, this.npc)){
+        if(this.checkOverlap(this.player, this.npc) == true){
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF) && this.first == false){
                 //textbox code
@@ -105,29 +106,24 @@ class Town extends Phaser.Scene{
                 this.text02msg.visible = true;
                 this.pfp1.visible = false;
                 this.pfp2.visible = true;
+            }if(Phaser.Input.Keyboard.JustDown(keyE) && this.first == true){
+                this.first = false;
+                this.text01.visible = false;
+                this.text01msg.visible = false;
+                this.text02msg.visible = false;
+                this.pfp1.visible = false;
+                this.pfp2.visible = false;
             }
-        }if(!this.checkCollision(this.player, this.npc)){
+        }if(!this.checkOverlap(this.player, this.npc)){
             this.f.visible = false;
-        }if(Phaser.Input.Keyboard.JustDown(keyF) &&this.first == true){
-            this.first = false;
-            this.text01.visible = false;
-            this.text01msg.visible = false;
-            this.text02msg.visible = false;
-            this.pfp1.visible = false;
-            this.pfp2.visible = false;
         }
-        
+        this.physics.world.wrap(this.player, 0);
     }
 
-    checkCollision(shrimp, obs){
-        if(shrimp.x<obs.x+obs.width &&
-           shrimp.x + shrimp.width > obs.x &&
-           shrimp.y < obs.y + obs.height &&
-           shrimp.height + shrimp.y > obs.y){
-               return true;
-        }else{
-            return false;
-        }
+    checkOverlap(A,  B){
+        var boundA = A.getBounds();
+        var boundB = B.getBounds();
+        return Phaser.Geom.Intersects.RectangleToRectangle(boundA, boundB);
     }
 
     textDestroy(textbox, textmsg){
