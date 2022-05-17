@@ -15,6 +15,7 @@ class Load extends Phaser.Scene{
         this.load.image('textbox', 'textbox.png');
         this.load.image('p1', 'profile1.png');
         this.load.image('p2', 'profile2.png');
+        this.load.audio('bg_music', 'music1.mp3');
     }
 
     create() {

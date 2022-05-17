@@ -35,7 +35,7 @@ class Town extends Phaser.Scene{
         this.player = this.physics.add.sprite(800, 448, 'mc').setScale(0.5);
         this.physics.add.collider(this.player, this.ground);
         this.physics.add.collider(this.npc, this.ground);
-        /*let musicConfig = {
+        let musicConfig = {
             mute: false,
             volume: 0.2,
             rate: 1,
@@ -45,7 +45,7 @@ class Town extends Phaser.Scene{
             delay: 0
         }
         let music = this.sound.add('bg_music', musicConfig);
-        music.play(); // seaweed */
+        music.play();
         // set up animations
         //this.goodEnding = false;
         this.f = this.add.image(600, 450,'f').setScale(0.5);
@@ -82,12 +82,15 @@ class Town extends Phaser.Scene{
         }
         /*if(Phaser.Input.Keyboard.JustDown(keyF) && (this.checkCollision(player, factory))){
             this.scene.start("factoryScene");
+            music.stop();
         }
         if(Phaser.Input.Keyboard.JustDown(keyF) && (this.checkCollision(player, factory))){
             this.scene.start("alleyScene");
+            music.stop();
         }
         if(Phaser.Input.Keyboard.JustDown(keyF) && (this.checkCollision(player, factory))){
             this.scene.start("woodsScene");
+            music.stop();
         }*/
         if(this.checkCollision(this.player, this.npc)){
             this.f.visible = true;
