@@ -36,4 +36,4 @@ let config = {
 
 let game = new Phaser.Game(config);
 let cursors;
-let keyF, keyN, keyE;
+let keyF, keyN, keyE, keyM;

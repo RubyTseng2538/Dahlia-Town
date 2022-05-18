@@ -32,6 +32,7 @@ class Town extends Phaser.Scene{
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.N);
         keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        keyM = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
 
         this.npc = this.physics.add.sprite(600, 448, 'char2').setScale(0.5);
         this.player = this.physics.add.sprite(200, 448, 'mc').setScale(0.5);
@@ -116,6 +117,9 @@ class Town extends Phaser.Scene{
             }
         }if(!this.checkOverlap(this.player, this.npc)){
             this.f.visible = false;
+        }if(Phaser.Input.Keyboard.JustDown(keyM)){
+            music.stop();
+            this.scene.start("menuScene");
         }
         this.physics.world.wrap(this.player, 0);
     }
