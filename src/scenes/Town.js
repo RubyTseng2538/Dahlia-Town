@@ -54,26 +54,21 @@ class Town extends Phaser.Scene{
         music.play();
         // set up animations
         //this.goodEnding = false;
+        
         this.f = this.add.image(600, 450,'f').setScale(0.5);
         this.f.visible = false;
-        this.pfp1 = this.add.image(200, 300, 'p1').setOrigin(0);
-        this.pfp2 = this.add.image(850, 300, 'p2').setOrigin(0);
-        this.text01 = new Textbox(this, 130, 500, 'textbox').setOrigin(0);
-        this.text01msg = this.add.text(150, 520, "AHHHHHHHHHHHHHHHHHHHHH");
-        this.text02msg = this.add.text(150, 520, "gurrrrrrrrrr");
-        this.text01msg.visible = false;
-        this.text02msg.visible = false;
-        this.pfp1.visible = false;
-        this.pfp2.visible = false;
+        this.text01 = new Textbox(this, 650, 600,'textbox');
         this.text01.visible = false;
-        this.first = false; 
+        this.fcount = 0;
+        this.texts = ["Hey! Haven’t seen you in a while. How are you?", "I’m doing great too!"];
     }
+
     update(){
-        if(cursors.left.isDown && this.first == false) {
+        if(cursors.left.isDown && this.text01.visible == false) {
             this.player.body.setVelocityX(-this.VELOCITY);
             //this.player.anims.play('run_left', true);
 
-        } else if(cursors.right.isDown && this.first == false) {
+        } else if(cursors.right.isDown && this.text01.visible == false) {
             this.player.body.setVelocityX(this.VELOCITY);
             //this.player.anims.play('run_right', true);
 
@@ -96,25 +91,18 @@ class Town extends Phaser.Scene{
         }*/
         if(this.checkOverlap(this.player, this.npc) == true){
             this.f.visible = true;
-            if(Phaser.Input.Keyboard.JustDown(keyF) && this.first == false){
-                //textbox code
-                this.first = true;
-                this.text01.visible = true;
-                this.text01msg.visible = true;
-                this.pfp1.visible = true;
-            }if(Phaser.Input.Keyboard.JustDown(keyN) && this.first == true){
-                this.text01msg.visible = false;
-                this.text02msg.visible = true;
-                this.pfp1.visible = false;
-                this.pfp2.visible = true;
-            }if(Phaser.Input.Keyboard.JustDown(keyE) && this.first == true){
-                this.first = false;
-                this.text01.visible = false;
-                this.text01msg.visible = false;
-                this.text02msg.visible = false;
-                this.pfp1.visible = false;
-                this.pfp2.visible = false;
+            if(Phaser.Input.Keyboard.JustDown(keyF)){
+                if(this.fcount<2){
+                    this.text01.visible = true;
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.texts));
+                    this.fcount++;
+                }else{
+                    this.text01.hideText();
+                    this.text01.visible = false;
+                    this.fcount = 0;
+                }
             }
+                //textbox code
         }if(!this.checkOverlap(this.player, this.npc)){
             this.f.visible = false;
         }if(Phaser.Input.Keyboard.JustDown(keyM)){
@@ -129,11 +117,5 @@ class Town extends Phaser.Scene{
         var boundB = B.getBounds();
         return Phaser.Geom.Intersects.RectangleToRectangle(boundA, boundB);
     }
-
-    textDestroy(textbox, textmsg){
-        textbox.visible = false;
-        textmsg.visible = false;
-        textbox.destroy();
-        textmsg.destroy();
-    }
+    
 }
