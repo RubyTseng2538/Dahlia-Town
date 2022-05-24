@@ -31,7 +31,10 @@ let config = {
     factory: 0,
     woods: 0,
     alley: 0,
-    scene: [Load, Menu, Town, Credit]
+    Brian: 0,
+    Carter: 0,
+    Greig: 0,
+    scene: [Load, Menu, Town, Factory, Credit]
 };
 
 let game = new Phaser.Game(config);
