@@ -25,6 +25,7 @@ class Textbox extends Phaser.GameObjects.Sprite{
 
     loadText(string){
         this.msg.visible = true;
+        this.msg.x = this.x - 450;
         this.content = string;
         this.msg.text = this.content;
 

@@ -28,15 +28,17 @@ let config = {
             }
         }
     },
-    factory: 0,
-    woods: 0,
-    alley: 0,
-    Brian: 0,
-    Carter: 0,
-    Greig: 0,
     scene: [Load, Menu, Town, Factory, Credit]
 };
 
 let game = new Phaser.Game(config);
 let cursors;
 let keyF, keyN, keyE, keyM;
+let factory = 0;
+let woods = 0;
+let alley = 0;
+let Brian = 0;
+let Carter = 0;
+let Greig = 0;
+let Haley = 0;
+let Frank = 0;
