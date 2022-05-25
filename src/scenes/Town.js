@@ -13,6 +13,7 @@ class Town extends Phaser.Scene{
 
         this.add.image(0, 0, 'background').setOrigin(0);
         this.factory = this.add.image(0, 0, 'factoryentry').setOrigin(0);
+        this.wood = this.add.image(4350, 0, 'forestdoor').setOrigin(0);
 
         //add ground
         this.ground = this.add.group();
@@ -79,10 +80,21 @@ class Town extends Phaser.Scene{
             "Have I seen Carter? No sorry sorry not since the last time we played chess together actually. It’s been three, maybe four months?", 
             "He kind of started becoming distant since then. Hope everything is alright. Sorry to be such a debbie downer, might have to start upping my dose on Elevate.",
             "Can’t keep ruining people’s day with bad news like that."];
+        this.text5 = ["Has my husband gone missing? You know he hasn’t been home in months, but I’m sure he’s just off having fun.",
+            "Am I worried at all? Well why would I be? He’s a grown man who can take care of himself. Elevate seems to have made my claws slightly sharper so John should be prepared to take on anything if that happened to him too.",
+            "You know now that you say something I guess Carter may have gone into the forest too. That’s where I remember seeing my husband go off to when he left town.",
+            "You should check the forest for clues about Carter."];
+        this.text6 = ["Sure I know about Elevate, but what you really want to know about is how every day at 6am on the dot, Brian leaves his house to go somewhere.",
+            "Sure it might be to go to work, but that’s too simple. I think he has a secret lover in the neighboring town.",
+            "Why do I think that? Well the smell of steak and womens perfume on his clothes slaps me in the face every time I’m about to hop into bed. And boy does that steak smell expensive.",
+            "You didn’t hear that from me though."];
+        this.text7 = ["What’s that you say? Carter’s gone missing? Now that’s some juicy gossip! Sorry, I haven't heard anything about Carter though.",
+        "I did hear that something very similar happened to Emma though with her husband. One day he just got up and left town, never was seen again.",
+        "I’d talk to Emma about her missing husband John. She might know more than I do. And if there’s anything good, let me know all about it, hehe."];
     }
 
     update(){
-        //this.npc.anims.play('char3');
+        this.npc2.anims.play('char3');
         if(cursors.left.isDown && this.text01.visible == false) {
             this.player.body.setVelocityX(-this.VELOCITY);
             this.player.anims.play('walk_left', true);
@@ -115,14 +127,25 @@ class Town extends Phaser.Scene{
                 this.music.stop();
             }
         }
-        /*if(Phaser.Input.Keyboard.JustDown(keyF) && (this.checkCollision(player, factory))){
-            this.scene.start("alleyScene");
-            music.stop();
+        if((this.checkOverlap(this.player, this.wood))){
+            this.f.x = 4350;
+            this.f.visible = true;
+            if(Phaser.Input.Keyboard.JustDown(keyF)){
+                if(Emma == 1){
+                    this.scene.start("woodsScene");
+                    this.music.stop();
+                }else if(this.fcount <1){
+                    this.text01.x = 4000;
+                    this.text01.visible = true;
+                    this.text01.loadText("You don't have time to stroll in the woods right now.");
+                    this.fcount++;
+                }else{
+                    this.text01.hideText();
+                    this.text01.visible = false;
+                    this.fcount = 0;
+                }
+            }
         }
-        if(Phaser.Input.Keyboard.JustDown(keyF) && (this.checkCollision(player, factory))){
-            this.scene.start("woodsScene");
-            music.stop();
-        }*/
         if(this.checkOverlap(this.player, this.npc) == true){
             this.f.x = 2100;
             this.f.visible = true;
@@ -150,6 +173,57 @@ class Town extends Phaser.Scene{
                 }
             }
                 //textbox code
+        }if(this.checkOverlap(this.player, this.npc2) == true){
+            this.f.x = 2900;
+            this.f.visible = true;
+            if(Phaser.Input.Keyboard.JustDown(keyF)){
+                if(Greig == 0 && this.fcount<4){
+                    this.text01.x = 2900;
+                    this.text01.visible = true;
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text6));
+                    this.fcount++;
+                }else if(this.fcount < 3 && Greig == 1){
+                    this.text01.x = 2900;
+                    this.text01.visible = true;
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text7));
+                    this.fcount++;
+                }else{
+                    this.text01.hideText();
+                    this.text01.visible = false;
+                    this.fcount = 0;
+                    if(Greig == 1){
+                        Delilah = 1;
+                    }
+                }
+            }
+        }if(this.checkOverlap(this.player, this.npc3) == true){
+            this.f.x = 800;
+            this.f.visible = true;
+            if(Phaser.Input.Keyboard.JustDown(keyF)){
+                if(this.fcount<1 && Greig == 0){
+                    this.text01.x = 800;
+                    this.text01.visible = true;
+                    this.text01.loadText("What a beautiful day out today, huh? Elevate seems to just make the sun shine brighter and the flowers smell sweeter.");
+                    this.fcount++;
+                }else if(this.fcount < 1 && Greig == 1){
+                    this.text01.x = 800;
+                    this.text01.visible = true;
+                    this.text01.loadText("Sorry, say that again? Carter’s gone missing? Well I’m sure you’ll find him soon!");
+                    this.fcount++;
+                }else if (Delilah == 1 && this.fcount <4){
+                    this.text01.x = 800;
+                    this.text01.visible = true;
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text5));
+                    this.fcount++;
+                }else{
+                    this.text01.hideText();
+                    this.text01.visible = false;
+                    this.fcount = 0;
+                    if(Delilah == 1){
+                        Emma = 1;
+                    }
+                }
+            }
         }if(this.checkOverlap(this.player, this.npc4) == true){
             this.f.x = 3500;
             this.f.visible = true;
@@ -188,10 +262,10 @@ class Town extends Phaser.Scene{
             }
         }
         
-        if(!this.checkOverlap(this.player, this.npc) && !this.checkOverlap(this.player, this.factory) && !this.checkOverlap(this.player, this.npc4) && !(this.checkOverlap(this.player, this.npc5)&& this.npc5.visible == true)){
+        if(!this.checkOverlap(this.player, this.npc) && !this.checkOverlap(this.player, this.factory) && !this.checkOverlap(this.player, this.npc4) && !(this.checkOverlap(this.player, this.npc5)&& this.npc5.visible == true) && !this.checkOverlap(this.player, this.npc2) && !this.checkOverlap(this.player, this.npc3) && !this.checkOverlap(this.player, this.wood)){
             this.f.visible = false;
         }if(Phaser.Input.Keyboard.JustDown(keyM)){
-            music.stop();
+            this.music.stop();
             this.scene.start("menuScene");
         }
     }

@@ -7,15 +7,15 @@ class Factory extends Phaser.Scene{
         this.height = 720;
         this.VELOCITY = 1000;
         this.cameras.main.setBackgroundColor('#666');
-        this.cameras.main.setBounds(0, 0, 1281, this.height);
+        this.cameras.main.setBounds(0, 0, 2239, this.height);
         this.cameras.main.setZoom(1);
         this.cameras.main.setScroll(0, this.height);
 
         this.add.image(0, 0, 'factory').setOrigin(0);
-        this.door = this.add.image(1050, 300,'factorydoor').setOrigin(0);
+        this.door = this.add.image(2040, 0,'factorydoor').setOrigin(0);
 
         this.ground = this.add.group();
-        this.groundSprite = this.physics.add.sprite(2265, this.height-120, 'ground').setScale(1);
+        this.groundSprite = this.physics.add.sprite(1120, this.height-120, 'ground2').setScale(1);
         this.groundSprite.body.immovable = true;
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
@@ -26,10 +26,11 @@ class Factory extends Phaser.Scene{
         
         this.createAnimation();
 
-        this.npc1 = this.physics.add.sprite(200, 400, 'char2').setScale(0.8);
-        this.npc2 = this.physics.add.sprite(800, 400, 'char2').setScale(0.8);
-        this.player = this.physics.add.sprite(1270, 400, 'player_atlas', 'idle_left_0001').setScale(0.8);
+        this.npc1 = this.physics.add.sprite(600, 400, 'char2').setScale(0.8);
+        this.npc2 = this.physics.add.sprite(1600, 400, 'char2').setScale(0.8);
+        this.player = this.physics.add.sprite(2000, 400, 'player_atlas', 'idle_left_0001').setScale(0.8);
         this.player.body.setCollideWorldBounds(true);
+        this.physics.world.setBounds( 0, 0, 2239, 720);
         this.player.body.onWorldBounds = true;   
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.ground);
@@ -68,7 +69,7 @@ class Factory extends Phaser.Scene{
     update(){
         if(Frank == 1){
             this.npc1.visible = false;
-            this.npc2.x = 200;
+            this.npc2.x = 600;
         }
         if(Phaser.Input.Keyboard.JustDown(keyM)){
             music.stop();
@@ -93,7 +94,7 @@ class Factory extends Phaser.Scene{
             }
    
         }if(this.checkOverlap(this.player, this.door) == true){
-            this.f.x = 1100;
+            this.f.x = 2100;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 this.scene.start("townScene");
@@ -102,14 +103,16 @@ class Factory extends Phaser.Scene{
         }
         
         if(this.checkOverlap(this.player, this.npc1) == true && this.npc1.visible == true){
-            this.f.x = 200;
+            this.f.x = 600;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 if(this.fcount<1 && Brian == 0){
+                    this.text01.x = 600;
                     this.text01.visible = true;
                     this.text01.loadText("Whew! Work is hard but Elevate makes everything easier.");
                     this.fcount++;
                 }else if(this.fcount<8 && Brian == 1){
+                    this.text01.x = 600;
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text2));
                     this.fcount++;
@@ -124,10 +127,11 @@ class Factory extends Phaser.Scene{
             }
 
         }if(this.checkOverlap(this.player, this.npc2) == true && this.npc1.visible == true){
-            this.f.x = 800;
+            this.f.x = 1600;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 if(this.fcount<2){
+                    this.text01.x = 1600;
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text1));
                     this.fcount++;
@@ -138,10 +142,11 @@ class Factory extends Phaser.Scene{
                 }
             }
         }if(this.checkOverlap(this.player, this.npc2) == true && this.npc1.visible == false){
-            this.f.x = 200;
+            this.f.x = 600;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 if(this.fcount<2){
+                    this.text01.x = 600;
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text3));
                     this.fcount++;
@@ -225,7 +230,7 @@ class Factory extends Phaser.Scene{
         this.anims.create({
             key: 'char3',
             frames: this.anims.generateFrameNumbers('char3', {start: 0, end: 11, first: 0}),
-            frameRate: 1,
+            frameRate: 15,
             repeat: -1
         });
     }
