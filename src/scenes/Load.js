@@ -21,6 +21,8 @@ class Load extends Phaser.Scene{
         this.load.image('ground2', 'factoryfloor.png');
         this.load.image('factorydoor', 'factorydoor.png');
         this.load.image('forestdoor', 'forestdoor.png');
+        this.load.image('forest', 'forest.png');
+        this.load.image('ground3', 'forestfloor.png');
 
         this.load.spritesheet('char3', 'npc3idle.png', 
             {frameWidth: 123, frameHeight: 205, startFrame: 0, endFrame: 11});

@@ -130,10 +130,10 @@ class Town extends Phaser.Scene{
             this.f.x = 4350;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                if(Emma == 1){
+                /*if(Emma == 1){*/
                     this.scene.start("woodsScene");
-                    music.stop();
-                }else if(this.fcount <1){
+                    music.stop();1
+                /*}else if(this.fcount <1){
                     this.text01.x = 4000;
                     this.text01.visible = true;
                     this.text01.loadText("You don't have time to stroll in the woods right now.");
@@ -142,7 +142,7 @@ class Town extends Phaser.Scene{
                     this.text01.hideText();
                     this.text01.visible = false;
                     this.fcount = 0;
-                }
+                }*/
             }
         }
         if(this.checkOverlap(this.player, this.npc) == true){

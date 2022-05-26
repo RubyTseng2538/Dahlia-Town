@@ -28,7 +28,7 @@ let config = {
             }
         }
     },
-    scene: [Load, Menu, Town, Factory, Credit]
+    scene: [Load, Menu, Town, Factory, Woods, Credit]
 };
 
 let game = new Phaser.Game(config);
