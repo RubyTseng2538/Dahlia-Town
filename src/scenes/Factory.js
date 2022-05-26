@@ -45,8 +45,6 @@ class Factory extends Phaser.Scene{
             loop: true,
             delay: 0
         }
-        this.music = this.sound.add('bg_music', musicConfig);
-        this.music.play();
 
         this.f = this.add.image(100, 300,'f').setScale(0.5);
         this.f.visible = false;
@@ -98,7 +96,6 @@ class Factory extends Phaser.Scene{
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 this.scene.start("townScene");
-                this.music.stop();
             }
         }
         
@@ -109,12 +106,16 @@ class Factory extends Phaser.Scene{
                 if(this.fcount<1 && Brian == 0){
                     this.text01.x = 600;
                     this.text01.visible = true;
-                    this.text01.loadText("Whew! Work is hard but Elevate makes everything easier.");
+                    this.text01.loadText("Whew! Work is hard but Elevate makes everything easier.", "Carter");
                     this.fcount++;
-                }else if(this.fcount<8 && Brian == 1){
+                }else if(this.fcount<7 && Brian == 1){
                     this.text01.x = 600;
                     this.text01.visible = true;
-                    this.text01.loadText(this.text01.switchText(this.fcount, this.text2));
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text2), "Carter");
+                    this.fcount++;
+                }else if (this.fcount==7 && Brian == 1){
+                    this.text01.hideText();
+                    this.text01.boldText(this.text01.switchText(this.fcount, this.text2), "Carter");
                     this.fcount++;
                 }else{
                     this.text01.hideText();
@@ -133,7 +134,7 @@ class Factory extends Phaser.Scene{
                 if(this.fcount<2){
                     this.text01.x = 1600;
                     this.text01.visible = true;
-                    this.text01.loadText(this.text01.switchText(this.fcount, this.text1));
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text1), "Greig");
                     this.fcount++;
                 }else{
                     this.text01.hideText();
@@ -145,10 +146,14 @@ class Factory extends Phaser.Scene{
             this.f.x = 600;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                if(this.fcount<2){
+                if(this.fcount<1){
                     this.text01.x = 600;
                     this.text01.visible = true;
-                    this.text01.loadText(this.text01.switchText(this.fcount, this.text3));
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text3), "Greig");
+                    this.fcount++;
+                }else if(this.fcount==1){
+                    this.text01.hideText();
+                    this.text01.boldText(this.text01.switchText(this.fcount, this.text3), "Greig");
                     this.fcount++;
                 }else{
                     this.text01.hideText();

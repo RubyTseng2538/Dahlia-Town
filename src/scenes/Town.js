@@ -59,8 +59,8 @@ class Town extends Phaser.Scene{
             loop: true,
             delay: 0
         }
-        this.music = this.sound.add('bg_music', musicConfig);
-        this.music.play();
+        music = this.sound.add('bg_music', musicConfig);
+        music.play();
         // set up animations
         //this.goodEnding = false;
         
@@ -124,7 +124,6 @@ class Town extends Phaser.Scene{
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 this.scene.start("factoryScene");
-                this.music.stop();
             }
         }
         if((this.checkOverlap(this.player, this.wood))){
@@ -133,7 +132,7 @@ class Town extends Phaser.Scene{
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 if(Emma == 1){
                     this.scene.start("woodsScene");
-                    this.music.stop();
+                    music.stop();
                 }else if(this.fcount <1){
                     this.text01.x = 4000;
                     this.text01.visible = true;
@@ -150,20 +149,25 @@ class Town extends Phaser.Scene{
             this.f.x = 2100;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                if(Carter == 0 && this.fcount<6){
+                if(Carter == 0 && this.fcount<5){
                     this.text01.x = 2100;
                     this.text01.visible = true;
-                    this.text01.loadText(this.text01.switchText(this.fcount, this.texts));
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.texts), "Brian");
                     this.fcount++;
-                }else if(Carter == 1 && this.fcount < 2 && Greig == 0){
+                }else if(Carter == 0 && this.fcount==5){
+                    this.text01.hideText();
+                    this.text01.boldText(this.text01.switchText(this.fcount, this.texts), "Brian");
+                    this.fcount++;
+                }
+                else if(Carter == 1 && this.fcount < 2 && Greig == 0){
                     this.text01.x = 2100;
                     this.text01.visible = true;
-                    this.text01.loadText(this.text01.switchText(this.fcount, this.text2));
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text2), "Brian");
                     this.fcount++;
                 }else if (Greig == 1 && this.fcount <4){
                     this.text01.x = 2100;
                     this.text01.visible = true;
-                    this.text01.loadText(this.text01.switchText(this.fcount, this.text4));
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text4), "Brian");
                     this.fcount++;
                 }else{
                     this.text01.hideText();
@@ -180,12 +184,16 @@ class Town extends Phaser.Scene{
                 if(Greig == 0 && this.fcount<4){
                     this.text01.x = 2900;
                     this.text01.visible = true;
-                    this.text01.loadText(this.text01.switchText(this.fcount, this.text6));
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text6), "Delilah");
                     this.fcount++;
-                }else if(this.fcount < 3 && Greig == 1){
+                }else if(this.fcount < 2 && Greig == 1){
                     this.text01.x = 2900;
                     this.text01.visible = true;
-                    this.text01.loadText(this.text01.switchText(this.fcount, this.text7));
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text7), "Delilah");
+                    this.fcount++;
+                }else if (this.fcount == 2 && Greig == 1){
+                    this.text01.hideText();
+                    this.text01.boldText(this.text01.switchText(this.fcount, this.text7), "Delilah");
                     this.fcount++;
                 }else{
                     this.text01.hideText();
@@ -203,17 +211,21 @@ class Town extends Phaser.Scene{
                 if(this.fcount<1 && Greig == 0){
                     this.text01.x = 800;
                     this.text01.visible = true;
-                    this.text01.loadText("What a beautiful day out today, huh? Elevate seems to just make the sun shine brighter and the flowers smell sweeter.");
+                    this.text01.loadText("What a beautiful day out today, huh? Elevate seems to just make the sun shine brighter and the flowers smell sweeter.", "Emma");
                     this.fcount++;
                 }else if(this.fcount < 1 && Greig == 1){
                     this.text01.x = 800;
                     this.text01.visible = true;
-                    this.text01.loadText("Sorry, say that again? Carter’s gone missing? Well I’m sure you’ll find him soon!");
+                    this.text01.loadText("Sorry, say that again? Carter’s gone missing? Well I’m sure you’ll find him soon!", "Emma");
                     this.fcount++;
-                }else if (Delilah == 1 && this.fcount <4){
+                }else if (Delilah == 1 && this.fcount <3){
                     this.text01.x = 800;
                     this.text01.visible = true;
-                    this.text01.loadText(this.text01.switchText(this.fcount, this.text5));
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text5), "Emma");
+                    this.fcount++;
+                }else if(Delilah == 1 && this.fcount ==3){
+                    this.text01.hideText();
+                    this.text01.boldText(this.text01.switchText(this.fcount, this.text5), "Emma");
                     this.fcount++;
                 }else{
                     this.text01.hideText();
@@ -231,12 +243,12 @@ class Town extends Phaser.Scene{
                 if(Carter == 0 && this.fcount<1){
                     this.text01.x = 3500;
                     this.text01.visible = true;
-                    this.text01.loadText("Daddy says I’m not allowed to talk to strangers, but he also says I’m not allowed to eat ice cream in bed so what does he know.");
+                    this.text01.loadText("Daddy says I’m not allowed to talk to strangers, but he also says I’m not allowed to eat ice cream in bed so what does he know.", "Haley");
                     this.fcount++;
                 }else if(Carter == 1 && this.fcount <1){
                     this.text01.x = 3500;
                     this.text01.visible = true;
-                    this.text01.loadText("I’m so excited to finally start Elevate for myself. Daddy says I’m too young but I don’t care.");
+                    this.text01.loadText("I’m so excited to finally start Elevate for myself. Daddy says I’m too young but I don’t care.", "Haley");
                     this.fcount++;
                 }else{
                     this.text01.hideText();
@@ -248,10 +260,14 @@ class Town extends Phaser.Scene{
             this.f.x = 3600;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                if(this.fcount<5){
+                if(this.fcount<4){
                     this.text01.x = 3600;
                     this.text01.visible = true;
-                    this.text01.loadText(this.text01.switchText(this.fcount, this.text3));
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text3), "Frank");
+                    this.fcount++;
+                }else if(this.fcount==4){
+                    this.text01.hideText();
+                    this.text01.boldText(this.text01.switchText(this.fcount, this.text3), "Frank");
                     this.fcount++;
                 }else{
                     this.text01.hideText();
@@ -265,7 +281,7 @@ class Town extends Phaser.Scene{
         if(!this.checkOverlap(this.player, this.npc) && !this.checkOverlap(this.player, this.factory) && !this.checkOverlap(this.player, this.npc4) && !(this.checkOverlap(this.player, this.npc5)&& this.npc5.visible == true) && !this.checkOverlap(this.player, this.npc2) && !this.checkOverlap(this.player, this.npc3) && !this.checkOverlap(this.player, this.wood)){
             this.f.visible = false;
         }if(Phaser.Input.Keyboard.JustDown(keyM)){
-            this.music.stop();
+            music.stop();
             this.scene.start("menuScene");
         }
     }

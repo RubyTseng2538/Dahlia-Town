@@ -4,14 +4,41 @@ class Textbox extends Phaser.GameObjects.Sprite{
         scene.add.existing(this);
         this.Xtext = 300;
         this.Ytext = 100;
+        this.catName = "";
         this.content = "";
         this.cur = [];
         this.msg = scene.make.text({
             x: this.x -450,
-            y: this.y -70,
+            y: this.y -30,
             text: this.content,
             style: {
                 fontSize: '18px',
+                fontFamily: 'Arial',
+                fontStyle: '',
+                color: '#ffffff',
+                align: 'left',
+                wordWrap: { width: 900 }
+            },
+        });
+        this.msg2 = scene.make.text({
+            x: this.x -450,
+            y: this.y -30,
+            text: this.content,
+            style: {
+                fontSize: '18px',
+                fontFamily: 'Arial',
+                fontStyle: 'bold',
+                color: '#ffffff',
+                align: 'left',
+                wordWrap: { width: 900 }
+            },
+        });
+        this.name = scene.make.text({
+            x: this.x -450,
+            y: this.y -70,
+            text: this.catName,
+            style: {
+                fontSize: '24px',
                 fontFamily: 'Arial',
                 color: '#ffffff',
                 align: 'left',
@@ -23,15 +50,32 @@ class Textbox extends Phaser.GameObjects.Sprite{
         ;
     }
 
-    loadText(string){
+    loadText(string, name){
+        this.name.visible = true;
+        this.name.x = this.x - 450;
+        this.catName = name;
+        this.name.text = this.catName;
         this.msg.visible = true;
         this.msg.x = this.x - 450;
         this.content = string;
         this.msg.text = this.content;
-
     }
+
+    boldText(string, name){
+        this.name.visible = true;
+        this.name.x = this.x - 450;
+        this.catName = name;
+        this.name.text = this.catName;
+        this.msg2.visible = true;
+        this.msg2.x = this.x - 450;
+        this.content = string;
+        this.msg2.text = this.content;
+    }
+
     hideText(){
         this.msg.visible = false;
+        this.name.visible = false;
+        this.msg2.visible = false;
     }
     switchText(count, array){
         this.cur = array;
