@@ -26,8 +26,8 @@ class Factory extends Phaser.Scene{
         
         this.createAnimation();
 
-        this.npc1 = this.physics.add.sprite(600, 400, 'char2').setScale(0.8);
-        this.npc2 = this.physics.add.sprite(1600, 400, 'char2').setScale(0.8);
+        this.npc1 = this.physics.add.sprite(600, 400, 'carter').setScale(0.8);
+        this.npc2 = this.physics.add.sprite(1600, 400, 'greig').setScale(0.8);
         this.player = this.physics.add.sprite(2000, 400, 'player_atlas', 'idle_left_0001').setScale(0.8);
         this.player.body.setCollideWorldBounds(true);
         this.physics.world.setBounds( 0, 0, 2239, 720);

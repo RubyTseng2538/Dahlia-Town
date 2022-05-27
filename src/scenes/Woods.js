@@ -12,7 +12,7 @@ class Woods extends Phaser.Scene{
         this.cameras.main.setScroll(0, this.height);
 
         this.add.image(0, 0, 'forest').setOrigin(0);
-        //this.town = this.add.image(0, 0, 'factoryentry').setOrigin(0);
+        this.town = this.add.image(0, 0, 'towndoor').setOrigin(0);
 
         this.ground = this.add.group();
         this.groundSprite = this.physics.add.sprite(1770, this.height-120, 'ground3').setScale(1);
@@ -26,7 +26,7 @@ class Woods extends Phaser.Scene{
 
         this.createAnimation();
 
-        this.player = this.physics.add.sprite(1550, 400, 'player_atlas', 'idle_right_0001').setScale(0.8);
+        this.player = this.physics.add.sprite(200, 400, 'player_atlas', 'idle_right_0001').setScale(0.8);
         this.physics.world.setBounds( 0, 0, 3537, 720);
         this.player.body.setCollideWorldBounds(true);
         this.player.body.onWorldBounds = true;   
@@ -72,6 +72,14 @@ class Woods extends Phaser.Scene{
                this.player.anims.play('idle_right');
             }
    
+        }
+
+        if(this.checkOverlap(this.player, this.town) == true){
+            this.f.x = 150;
+            this.f.visible = true;
+            if(Phaser.Input.Keyboard.JustDown(keyF)){
+                this.scene.start("townScene");
+            }
         }
     }
 

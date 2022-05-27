@@ -31,11 +31,11 @@ class Town extends Phaser.Scene{
         //create animation
         this.createAnimation();
 
-        this.npc = this.physics.add.sprite(2100, 400, 'char2').setScale(0.8);
-        this.npc2 = this.physics.add.sprite(2900, 400, 'char2').setScale(0.8);
-        this.npc3 = this.physics.add.sprite(800, 400, 'char2').setScale(0.8);
-        this.npc4 = this.physics.add.sprite(3500, 400, 'char2').setScale(0.8);
-        this.npc5 = this.physics.add.sprite(3600, 400, 'char2').setScale(0.8);
+        this.npc = this.physics.add.sprite(2100, 400, 'brian').setScale(0.8);
+        this.npc2 = this.physics.add.sprite(2900, 400, 'delilah').setScale(0.8);
+        this.npc3 = this.physics.add.sprite(800, 400, 'emma').setScale(0.8);
+        this.npc4 = this.physics.add.sprite(3500, 400, 'haley').setScale(0.8);
+        this.npc5 = this.physics.add.sprite(3600, 400, 'frank').setScale(0.8);
         this.npc5.visible = false;
         this.physics.add.collider(this.npc, this.ground);
         this.physics.add.collider(this.npc2, this.ground);
@@ -94,7 +94,8 @@ class Town extends Phaser.Scene{
     }
 
     update(){
-        this.npc2.anims.play('char3');
+        this.npc2.anims.play('char3', true);
+        this.npc3.anims.play('char4', true);
         if(cursors.left.isDown && this.text01.visible == false) {
             this.player.body.setVelocityX(-this.VELOCITY);
             this.player.anims.play('walk_left', true);
@@ -352,8 +353,19 @@ class Town extends Phaser.Scene{
         this.anims.create({
             key: 'char3',
             frames: this.anims.generateFrameNumbers('char3', {start: 0, end: 11, first: 0}),
-            frameRate: 1,
-            repeat: -1
+            frameRate: 10,
+            repeat: -1,
+            repeatDelay: 3000,
+            yoyo: true
+        });
+
+        this.anims.create({
+            key: 'char4',
+            frames: this.anims.generateFrameNumbers('char4', {start: 0, end: 3, first: 0}),
+            frameRate: 10,
+            repeat: -1,
+            repeatDelay: 1000,
+            yoyo: true
         });
     }
 }
