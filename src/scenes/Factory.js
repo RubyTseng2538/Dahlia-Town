@@ -36,15 +36,6 @@ class Factory extends Phaser.Scene{
         this.physics.add.collider(this.player, this.ground);
         this.physics.add.collider(this.npc1, this.ground);
         this.physics.add.collider(this.npc2, this.ground);
-        let musicConfig = {
-            mute: false,
-            volume: 0.2,
-            rate: 1,
-            detune: 0,
-            seek: 0,
-            loop: true,
-            delay: 0
-        }
 
         this.f = this.add.image(100, 300,'f').setScale(0.5);
         this.f.visible = false;
@@ -70,7 +61,6 @@ class Factory extends Phaser.Scene{
             this.npc2.x = 600;
         }
         if(Phaser.Input.Keyboard.JustDown(keyM)){
-            music.stop();
             this.scene.start("menuScene");
         }
         if(cursors.left.isDown && this.text01.visible == false) {

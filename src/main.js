@@ -33,7 +33,6 @@ let config = {
 
 let game = new Phaser.Game(config);
 let cursors;
-let music;
 let keyF, keyN, keyE, keyM;
 let factory = 0;
 let woods = 0;
@@ -45,3 +44,4 @@ let Haley = 0;
 let Frank = 0;
 let Delilah = 0;
 let Emma = 0;
+let play = false;

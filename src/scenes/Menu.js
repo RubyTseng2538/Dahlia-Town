@@ -22,6 +22,9 @@ class Menu extends Phaser.Scene{
         this.add.text(game.config.width/2, game.config.height/2 + 260, 'Press F to start and continue conversation', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 + 300, 'Press M to go back to menu', menuConfig).setOrigin(0.5);
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+
+        this.sound.stopByKey('bg_music');
+        play = false;
     }
 
     update(){

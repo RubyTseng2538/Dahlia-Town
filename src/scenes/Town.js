@@ -59,8 +59,12 @@ class Town extends Phaser.Scene{
             loop: true,
             delay: 0
         }
-        music = this.sound.add('bg_music', musicConfig);
-        music.play();
+        const music = this.sound.add('bg_music', musicConfig);
+        if(play == false){
+            console.log('music is not playing');
+            music.play();
+            play = true;
+        }
         // set up animations
         //this.goodEnding = false;
         
@@ -133,7 +137,6 @@ class Town extends Phaser.Scene{
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 /*if(Emma == 1){*/
                     this.scene.start("woodsScene");
-                    music.stop();1
                 /*}else if(this.fcount <1){
                     this.text01.x = 4000;
                     this.text01.visible = true;
@@ -282,7 +285,6 @@ class Town extends Phaser.Scene{
         if(!this.checkOverlap(this.player, this.npc) && !this.checkOverlap(this.player, this.factory) && !this.checkOverlap(this.player, this.npc4) && !(this.checkOverlap(this.player, this.npc5)&& this.npc5.visible == true) && !this.checkOverlap(this.player, this.npc2) && !this.checkOverlap(this.player, this.npc3) && !this.checkOverlap(this.player, this.wood)){
             this.f.visible = false;
         }if(Phaser.Input.Keyboard.JustDown(keyM)){
-            music.stop();
             this.scene.start("menuScene");
         }
     }

@@ -33,18 +33,6 @@ class Woods extends Phaser.Scene{
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.ground);
 
-        let musicConfig = {
-            mute: false,
-            volume: 0.2,
-            rate: 1,
-            detune: 0,
-            seek: 0,
-            loop: true,
-            delay: 0
-        }
-        music = this.sound.add('bg_music', musicConfig);
-        music.play();
-
         this.f = this.add.image(100, 300,'f').setScale(0.5);
         this.f.visible = false;
         this.text01 = new Textbox(this, 0, 600,'textbox');
