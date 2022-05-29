@@ -300,30 +300,32 @@ class Town extends Phaser.Scene{
             key: 'idle_left',
             frames: this.anims.generateFrameNames('player_atlas', {
                 prefix: 'idle_left_',
-                start: 1,
-                end: 15,
+                // start: 1,
+                // end: 15,
+                frames: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1 ],
                 suffix: '',
                 zeroPad: 4
             }),
             frameRate: 15,
             repeat: -1,
-            repeatDelay: 5000,
-            yoyo: true
+            repeatDelay: 100,
+            yoyo: false
         });
 
         this.anims.create({
             key: 'idle_right',
             frames: this.anims.generateFrameNames('player_atlas', {
                 prefix: 'idle_right_',
-                start: 1,
-                end: 15,
+                // start: 1,
+                // end: 15,
+                frames: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1 ],
                 suffix: '',
                 zeroPad: 4
             }),
             frameRate: 15,
             repeat: -1,
-            repeatDelay: 5000,
-            yoyo: true
+            repeatDelay: 100,
+            yoyo: false
         });
 
         this.anims.create({
@@ -358,7 +360,7 @@ class Town extends Phaser.Scene{
             frameRate: 10,
             repeat: -1,
             repeatDelay: 3000,
-            yoyo: true
+            yoyo: false
         });
 
         this.anims.create({
@@ -367,7 +369,7 @@ class Town extends Phaser.Scene{
             frameRate: 10,
             repeat: -1,
             repeatDelay: 1000,
-            yoyo: true
+            yoyo: false
         });
     }
 }

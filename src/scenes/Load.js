@@ -7,7 +7,7 @@ class Load extends Phaser.Scene{
         // set load path
         this.load.path = 'assets/'
         // load things here
-        this.load.atlas('player_atlas', 'playeratlas.png', 'playeratlas.json');
+        this.load.atlas('player_atlas', 'playeratlas2.png', 'playeratlas2.json');
         this.load.image('background', 'bg.png');
         this.load.image('f', 'fkey.png')
         this.load.image('ground', 'ground.png');
