@@ -308,7 +308,7 @@ class Town extends Phaser.Scene{
             }),
             frameRate: 15,
             repeat: -1,
-            repeatDelay: 100,
+            repeatDelay: 5000,
             yoyo: false
         });
 
@@ -324,7 +324,7 @@ class Town extends Phaser.Scene{
             }),
             frameRate: 15,
             repeat: -1,
-            repeatDelay: 100,
+            repeatDelay: 5000,
             yoyo: false
         });
 
