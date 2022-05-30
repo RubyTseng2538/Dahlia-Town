@@ -33,6 +33,14 @@ class Woods extends Phaser.Scene{
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.ground);
 
+        this.monster = this.physics.add.sprite(2950, 200, 'monster').setScale(0.8);
+        this.physics.add.collider(this.monster, this.ground);
+        
+        this.fence = this.physics.add.sprite(2900, 437, 'fence').setScale(0.8);
+        this.fence.body.immovable = true;
+        this.fence.body.allowGravity = false;
+        this.physics.add.collider(this.player, this.fence);
+
         this.f = this.add.image(100, 300,'f').setScale(0.5);
         this.f.visible = false;
         this.text01 = new Textbox(this, 0, 600,'textbox');
