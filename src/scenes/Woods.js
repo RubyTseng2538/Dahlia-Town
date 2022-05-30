@@ -33,7 +33,7 @@ class Woods extends Phaser.Scene{
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.ground);
 
-        this.monster = this.physics.add.sprite(2950, 200, 'monster').setScale(0.8);
+        this.monster = this.physics.add.sprite(2950, 200, 'monster_still').setScale(0.8);
         this.physics.add.collider(this.monster, this.ground);
         
         this.fence = this.physics.add.sprite(2900, 437, 'fence').setScale(0.8);
@@ -77,6 +77,9 @@ class Woods extends Phaser.Scene{
                 this.scene.start("townScene");
             }
         }
+
+        this.monster.anims.play('monster_move', true);
+
     }
 
     checkOverlap(A,  B){
@@ -139,6 +142,13 @@ class Woods extends Phaser.Scene{
                 zeroPad: 4
             }),
             frameRate: 30,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'monster_move',
+            frames: this.anims.generateFrameNumbers('monster', {start: 0, end: 10, first: 0}),
+            frameRate: 8,
             repeat: -1
         });
     }

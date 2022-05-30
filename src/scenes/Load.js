@@ -27,8 +27,8 @@ class Load extends Phaser.Scene{
         this.load.image('haley', 'haley.png');
         this.load.image('delilah', 'delilah2.png');
         this.load.image('emma', 'emma2.png');
-        this.load.image('monster', 'monster.png');
         this.load.image('fence', 'fence_blood.png');
+        this.load.image('monster_still', 'monster-1.png');
 
         this.load.spritesheet('char3', 'delilah.png', 
             {frameWidth: 123, frameHeight: 205, startFrame: 0, endFrame: 11});
@@ -36,6 +36,8 @@ class Load extends Phaser.Scene{
         this.load.spritesheet('char4', 'emma.png', 
             {frameWidth: 123, frameHeight: 205, startFrame: 0, endFrame: 3});
 
+        this.load.spritesheet('monster', 'monster.png',
+            {frameWidth: 500, frameHeight: 300, startFrame: 0, endFrame: 10});
         //load audio here
         this.load.audio('bg_music', 'music1.mp3');
     }
