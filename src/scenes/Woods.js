@@ -58,7 +58,7 @@ class Woods extends Phaser.Scene{
         "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex"];
 
         this.texts = ["RaaAaaAwwwWrrRrrrrrrr!!!!!",
-            "Oh my God! What the hell is that thing!",
+            "Oh my God... What the hell is that thing?",
             "Word on the street is someone’s been sticking their nose where it doesn’t belong. You know what we do with people that learn a little too much about our operation…",
             "Oh… Alex, it’s you.",
             "Simon?",
@@ -67,15 +67,15 @@ class Woods extends Phaser.Scene{
             "Product testing isn’t really my expertise, so I haven’t been paying too much attention. I’m pretty sure it’s working the way it’s supposed to though.",
             "I mean yeah, but people keep missing, and what’s up with this… thing? Why is it all caged up?",
             "Wait, you don’t know? If taken daily, Elevate can turn people into these monsters.",
-            "So you’re telling me this thing is Carter!",
+            "So you’re telling me this thing is Carter?!",
             "I don’t know who Carter is, but if he’s been taking Elevate there’s certainly a possibility.",
-            "Wow, this is a lot to take in, I didn’t realize any of this was happening. What about the people, do they know that any of this is happening?",
+            "This is a lot to take in, I didn’t realize any of this was happening. What about the people? Do they know that any of this is happening?",
             "Well, consumers have been buying our product at the same rate they always have. Considering how many people have gone missing, I’m assuming it hasn’t affected them in any way. Sales have actually gone up in the last few months. You could always go survey your customers?",
-            "That’s a great idea, I’ll be right back!",
+            "That’s a good idea, I’ll be right back.",
             "Wait! Before you go, what do you want me to do with this thing?",
             "You mean Carter? What do you usually do?",
             "Usually we catch ‘em once they sneak off into the woods, like we did here, and take ‘em out before anyone can notice. Keeps everything a little more under the radar.",
-            "Jesus Christ"];
+            "Jesus Christ."];
 
         if(Monster == 1){
             this.npc.x = 2400;

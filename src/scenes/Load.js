@@ -40,6 +40,13 @@ class Load extends Phaser.Scene{
 
         this.load.spritesheet('monster', 'monster.png',
             {frameWidth: 500, frameHeight: 300, startFrame: 0, endFrame: 10});
+        
+        this.load.spritesheet('brian_idle', 'brianidle.png', 
+            {frameWidth: 123, frameHeight: 205, startFrame: 0, endFrame: 3});
+
+        this.load.spritesheet('carter_idle', 'carteridle.png', 
+            {frameWidth: 123, frameHeight: 205, startFrame: 0, endFrame: 3});
+        
         //load audio here
         this.load.audio('bg_music', 'music1.mp3');
     }
