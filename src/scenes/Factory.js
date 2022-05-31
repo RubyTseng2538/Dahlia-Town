@@ -61,6 +61,7 @@ class Factory extends Phaser.Scene{
     }
 
     update(){
+        this.npc1.anims.play('carteridle', true);
         if(Frank == 1){
             this.npc1.visible = false;
             this.npc2.x = 600;
@@ -241,5 +242,12 @@ class Factory extends Phaser.Scene{
             frameRate: 15,
             repeat: -1
         });
+
+        this.anims.create({
+            key: 'carteridle',
+            frames: this.anims.generateFrameNumbers('carter_idle', {start: 0, end: 3, first: 0}),
+            frameRate: 4,
+            repeat: -1
+        })
     }
 }

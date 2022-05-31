@@ -114,6 +114,7 @@ class Town extends Phaser.Scene{
     update(){
         this.npc2.anims.play('char3', true);
         this.npc3.anims.play('char4', true);
+        this.npc.anims.play('brianidle', true);
         if(cursors.left.isDown && this.text01.visible == false) {
             this.player.body.setVelocityX(-this.VELOCITY);
             this.player.anims.play('walk_left', true);
@@ -413,6 +414,14 @@ class Town extends Phaser.Scene{
             frameRate: 10,
             repeat: -1,
             repeatDelay: 1000,
+            yoyo: false
+        });
+
+        this.anims.create({
+            key: 'brianidle',
+            frames: this.anims.generateFrameNumbers('brian_idle', {start: 0, end: 3, first: 0}),
+            frameRate: 4,
+            repeat: -1,
             yoyo: false
         });
     }
