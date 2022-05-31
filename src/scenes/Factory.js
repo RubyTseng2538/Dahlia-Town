@@ -53,6 +53,11 @@ class Factory extends Phaser.Scene{
             "I think she lives at the edge of town near the forest. You’ll find my supplier Frank there now probably. Have a terrific day stranger!"];
         this.text3 = ["Where did Carter go? Not sure, he was supposed to be here for the rest of the day.",
             "Why don’t you go ask the people in town if they’ve seen anything."];
+        this.text4 = ["Hey! Any luck finding Carter?",
+            "He’s turned into a hideous monster and ran out into the forest!",
+            "And my daughter just started taking Elevate too. Thank you so much for letting me know…",
+           "…Am I gonna do anything about it? Well Elevate really works. I mean it’s just begun to really kick in for me and I can’t imagine my life without it now. This work would be just too hard.",
+            "Either way my family ends up starving or monsters, so might as well stay happy doing it."];
     }
 
     update(){
@@ -136,20 +141,28 @@ class Factory extends Phaser.Scene{
             this.f.x = 600;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                if(this.fcount<1){
+                if(this.fcount<1 && Monster == 0){
                     this.text01.x = 600;
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text3), "Greig");
                     this.fcount++;
-                }else if(this.fcount==1){
+                }else if(this.fcount==1 && Monster == 0){
                     this.text01.hideText();
                     this.text01.boldText(this.text01.switchText(this.fcount, this.text3), "Greig");
+                    this.fcount++;
+                }else if (this.fcount < 5 && Monster == 1){
+                    this.text01.x = 600;
+                    this.text01.visible = true;
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text4), "Greig");
                     this.fcount++;
                 }else{
                     this.text01.hideText();
                     this.text01.visible = false;
                     this.fcount = 0;
                     Greig = 1;
+                    if(Monster == 1){
+                        Greig = 2;
+                    }
                 }
             }
         }

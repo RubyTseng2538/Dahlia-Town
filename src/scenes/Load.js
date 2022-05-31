@@ -27,8 +27,10 @@ class Load extends Phaser.Scene{
         this.load.image('haley', 'haley.png');
         this.load.image('delilah', 'delilah2.png');
         this.load.image('emma', 'emma2.png');
+        this.load.image('title', 'title.png');
         this.load.image('fence', 'fence_blood.png');
         this.load.image('monster_still', 'monster-1.png');
+        this.load.image('simon', 'first_mate.png');
 
         this.load.spritesheet('char3', 'delilah.png', 
             {frameWidth: 123, frameHeight: 205, startFrame: 0, endFrame: 11});

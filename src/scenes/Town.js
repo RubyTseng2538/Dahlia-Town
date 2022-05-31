@@ -95,6 +95,20 @@ class Town extends Phaser.Scene{
         this.text7 = ["What’s that you say? Carter’s gone missing? Now that’s some juicy gossip! Sorry, I haven't heard anything about Carter though.",
         "I did hear that something very similar happened to Emma though with her husband. One day he just got up and left town, never was seen again.",
         "I’d talk to Emma about her missing husband John. She might know more than I do. And if there’s anything good, let me know all about it, hehe."];
+        this.text8 = ["What’s that? I should stop taking Elevate, but why?",
+            "It turns people into monsters. Well that’s no good at all, is it.",
+            "It helps me so much though, maybe I’ll decrease my dose to just 2 a day. Thanks for the help, friend!"];
+
+        this.text9 = ["Daddy’s finally come around to letting me take Elevate.",
+            "I’m so excited!!!"];
+        this.text10 = ["Find out anything about my husband John?",
+            "You think he got turned into a monster and slaughtered?",
+            "Well being a monster sounds like fun, can’t wait to turn into one myself!",
+            "Having sharp claws and big teeth. And being able to run really fast and pick up heavy things with my mouth. Those all sound like pros to me."];
+        this.text11 = ["*Gasp* Emma’s husband is a horrifically mutated monster because of Elevate!!!",
+            "Now that’s the tea I’ve been looking for.",
+            "…Am I worried about turning into a monster? How could I spend any time being worried when I’m still gushing over this new gossip, it’s absolutely delightful.",
+            "Susan will never believe me when I tell her."];
     }
 
     update(){
@@ -121,7 +135,7 @@ class Town extends Phaser.Scene{
             }
    
         }
-        if(Carter == 1 && Greig != 1){
+        if(Carter == 1 && Greig == 0){
             this.npc5.visible = true;
         }
         if(this.checkOverlap(this.player, this.factory) == true){
@@ -135,9 +149,9 @@ class Town extends Phaser.Scene{
             this.f.x = 4350;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                /*if(Emma == 1){*/
+                if(Emma != 0){
                     this.scene.start("woodsScene");
-                /*}else if(this.fcount <1){
+                }else if(this.fcount <1){
                     this.text01.x = 4000;
                     this.text01.visible = true;
                     this.text01.loadText("You don't have time to stroll in the woods right now.");
@@ -146,7 +160,7 @@ class Town extends Phaser.Scene{
                     this.text01.hideText();
                     this.text01.visible = false;
                     this.fcount = 0;
-                }*/
+                }
             }
         }
         if(this.checkOverlap(this.player, this.npc) == true){
@@ -168,16 +182,24 @@ class Town extends Phaser.Scene{
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text2), "Brian");
                     this.fcount++;
-                }else if (Greig == 1 && this.fcount <4){
+                }else if (Greig == 1 && this.fcount <4 && Monster == 0){
                     this.text01.x = 2100;
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text4), "Brian");
+                    this.fcount++;
+                }else if (Monster == 1 && this.fcount < 3){
+                    this.text01.x = 2100;
+                    this.text01.visible = true;
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text8), "Brian");
                     this.fcount++;
                 }else{
                     this.text01.hideText();
                     this.text01.visible = false;
                     this.fcount = 0;
                     Brian = 1;
+                    if(Monster == 1){
+                        Brian = 2;
+                    }
                 }
             }
                 //textbox code
@@ -190,14 +212,19 @@ class Town extends Phaser.Scene{
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text6), "Delilah");
                     this.fcount++;
-                }else if(this.fcount < 2 && Greig == 1){
+                }else if(this.fcount < 2 && Greig == 1 && Monster == 0){
                     this.text01.x = 2900;
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text7), "Delilah");
                     this.fcount++;
-                }else if (this.fcount == 2 && Greig == 1){
+                }else if (this.fcount == 2 && Greig == 1 && Monster == 0){
                     this.text01.hideText();
                     this.text01.boldText(this.text01.switchText(this.fcount, this.text7), "Delilah");
+                    this.fcount++;
+                }else if (Monster == 1 && this.fcount < 4){
+                    this.text01.x = 2900;
+                    this.text01.visible = true;
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text11), "Delilah");
                     this.fcount++;
                 }else{
                     this.text01.hideText();
@@ -205,6 +232,8 @@ class Town extends Phaser.Scene{
                     this.fcount = 0;
                     if(Greig == 1){
                         Delilah = 1;
+                    }if(Monster == 1){
+                        Delilah = 2;
                     }
                 }
             }
@@ -222,14 +251,19 @@ class Town extends Phaser.Scene{
                     this.text01.visible = true;
                     this.text01.loadText("Sorry, say that again? Carter’s gone missing? Well I’m sure you’ll find him soon!", "Emma");
                     this.fcount++;
-                }else if (Delilah == 1 && this.fcount <3){
+                }else if (Delilah == 1 && this.fcount <3 && Monster == 0){
                     this.text01.x = 800;
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text5), "Emma");
                     this.fcount++;
-                }else if(Delilah == 1 && this.fcount ==3){
+                }else if(Delilah == 1 && this.fcount ==3 && Monster == 0){
                     this.text01.hideText();
                     this.text01.boldText(this.text01.switchText(this.fcount, this.text5), "Emma");
+                    this.fcount++;
+                }else if (Monster == 1 && this.fcount <4){
+                    this.text01.x = 800;
+                    this.text01.visible = true;
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text10), "Emma");
                     this.fcount++;
                 }else{
                     this.text01.hideText();
@@ -237,6 +271,8 @@ class Town extends Phaser.Scene{
                     this.fcount = 0;
                     if(Delilah == 1){
                         Emma = 1;
+                    }if(Monster == 1){
+                        Emma = 2;
                     }
                 }
             }
@@ -249,15 +285,23 @@ class Town extends Phaser.Scene{
                     this.text01.visible = true;
                     this.text01.loadText("Daddy says I’m not allowed to talk to strangers, but he also says I’m not allowed to eat ice cream in bed so what does he know.", "Haley");
                     this.fcount++;
-                }else if(Carter == 1 && this.fcount <1){
+                }else if(Carter == 1 && this.fcount <1 && Monster == 0){
                     this.text01.x = 3500;
                     this.text01.visible = true;
                     this.text01.loadText("I’m so excited to finally start Elevate for myself. Daddy says I’m too young but I don’t care.", "Haley");
                     this.fcount++;
+                }else if (Monster == 1 && this.fcount<2){
+                    this.text01.x = 3500;
+                    this.text01.visible = true;
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.text9), "Haley");
+                    this.fcount++
                 }else{
                     this.text01.hideText();
                     this.text01.visible = false;
                     this.fcount = 0;
+                    if(Monster == 1){
+                        Haley = 1;
+                    }
                 }
             }
         }if(this.checkOverlap(this.player, this.npc5) == true && this.npc5.visible == true){

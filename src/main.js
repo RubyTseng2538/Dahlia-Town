@@ -44,4 +44,6 @@ let Haley = 0;
 let Frank = 0;
 let Delilah = 0;
 let Emma = 0;
+let Monster = 0;
+let Simon = 0;
 let play = false;

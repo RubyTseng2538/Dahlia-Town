@@ -26,6 +26,10 @@ class Woods extends Phaser.Scene{
 
         this.createAnimation();
 
+        this.npc = this.physics.add.sprite(1800, 400, 'simon').setScale(0.8);
+        this.npc.visible = false;
+        this.physics.add.collider(this.npc, this.ground);
+
         this.player = this.physics.add.sprite(200, 400, 'player_atlas', 'idle_right_0001').setScale(0.8);
         this.physics.world.setBounds( 0, 0, 3537, 720);
         this.player.body.setCollideWorldBounds(true);
@@ -41,11 +45,43 @@ class Woods extends Phaser.Scene{
         this.fence.body.allowGravity = false;
         this.physics.add.collider(this.player, this.fence);
 
+        this.coll = this.add.rectangle(2650, 400, 200, 300, 0x000000);
+        this.coll.visible = false;
+
         this.f = this.add.image(100, 300,'f').setScale(0.5);
         this.f.visible = false;
         this.text01 = new Textbox(this, 0, 600,'textbox');
         this.text01.visible = false;
         this.fcount = 0;
+
+        this.speaker = ["Monster", "Alex", "???", "???", "Alex", "Simon", "Alex", "Simon", 
+        "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex"];
+
+        this.texts = ["RaaAaaAwwwWrrRrrrrrrr!!!!!",
+            "Oh my God! What the hell is that thing!",
+            "Word on the street is someone’s been sticking their nose where it doesn’t belong. You know what we do with people that learn a little too much about our operation…",
+            "Oh… Alex, it’s you.",
+            "Simon?",
+            "Alex, what are you doing here?",
+            "I’m just here to see how Elevate sales are going from the ground floor. I think something’s really wrong with our product. Do you know anything about that?",
+            "Product testing isn’t really my expertise, so I haven’t been paying too much attention. I’m pretty sure it’s working the way it’s supposed to though.",
+            "I mean yeah, but people keep missing, and what’s up with this… thing? Why is it all caged up?",
+            "Wait, you don’t know? If taken daily, Elevate can turn people into these monsters.",
+            "So you’re telling me this thing is Carter!",
+            "I don’t know who Carter is, but if he’s been taking Elevate there’s certainly a possibility.",
+            "Wow, this is a lot to take in, I didn’t realize any of this was happening. What about the people, do they know that any of this is happening?",
+            "Well, consumers have been buying our product at the same rate they always have. Considering how many people have gone missing, I’m assuming it hasn’t affected them in any way. Sales have actually gone up in the last few months. You could always go survey your customers?",
+            "That’s a great idea, I’ll be right back!",
+            "Wait! Before you go, what do you want me to do with this thing?",
+            "You mean Carter? What do you usually do?",
+            "Usually we catch ‘em once they sneak off into the woods, like we did here, and take ‘em out before anyone can notice. Keeps everything a little more under the radar.",
+            "Jesus Christ"];
+
+        if(Monster == 1){
+            this.npc.x = 2400;
+            this.npc.visible = true; 
+        }
+        this.majortalk = 0;
     }
     update(){
         if(cursors.left.isDown && this.text01.visible == false) {
@@ -79,6 +115,70 @@ class Woods extends Phaser.Scene{
         }
 
         this.monster.anims.play('monster_move', true);
+
+        if(this.checkOverlap(this.player, this.coll) == true){
+            this.f.x = 2800;
+            this.f.visible = true;
+            if(Phaser.Input.Keyboard.JustDown(keyF)){
+                this.majortalk = 1;
+                this.text01.x = 2550;
+                this.text01.visible = true;
+                if(this.fcount<1){
+                    this.cameras.main.flash(250);
+                    this.cameras.main.shake(250);
+                    this.text01.hideText();
+                    this.text01.boldText(this.text01.switchText(this.fcount, this.texts), this.speaker[this.fcount]);
+                    this.fcount++;
+                }else if(Monster == 0 && this.fcount < 19){
+                    this.text01.hideText();
+                    this.text01.loadText(this.text01.switchText(this.fcount, this.texts), this.speaker[this.fcount]);
+                    this.fcount++;
+                }else{
+                    this.text01.hideText();
+                    this.text01.visible = false;
+                    this.fcount = 0;
+                    Monster = 1;
+                }
+            }
+        }
+        if(this.checkOverlap(this.player, this.npc) && this.npc.visible== true){
+            this.f.x = 2400;
+            this.f.visible = true;
+            if(Phaser.Input.Keyboard.JustDown(keyF)){
+                if(Monster == 1 && this.fcount <1 && !(Brian ==2 && Greig == 2 && Delilah == 2&& Emma == 2 && Haley == 1)){
+                    this.text01.x = 2400;
+                    this.text01.visible = true;
+                    this.text01.boldText("Come back to me once you’ve talked to everyone in town.", "Simon");
+                    this.fcount++;
+                }else if(Brian ==2 && Greig == 2 && Delilah == 2&& Emma == 2 && Haley == 1 && this.fcount<1){
+                    this.text01.x = 2400;
+                    this.text01.visible = true;
+                    this.text01.loadText("So you’ve made your decision. What are we gonna do with this thing?", "Simon");
+                    this.fcount++
+
+                }else{
+                    this.text01.hideText();
+                    this.text01.visible = false;
+                    this.fcount = 0;
+                    if(Brian ==2 && Greig == 2 && Delilah == 2&& Emma == 2 && Haley == 1){
+                        Simon = 1;
+                    }
+                }
+            }
+        }
+
+        if(Simon == 1){
+            this.scene.start("endScene");
+        }
+
+        if(this.majortalk == 1){
+            this.npc.visible = true;
+            if(this.npc.x <= 2400){
+                this.npc.body.setVelocityX(200);
+            }else{
+                this.npc.body.setVelocityX(0);
+            }
+        }
 
     }
 
