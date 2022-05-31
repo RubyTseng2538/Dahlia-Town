@@ -35,8 +35,9 @@ class Town extends Phaser.Scene{
         this.npc2 = this.physics.add.sprite(2900, 400, 'delilah').setScale(0.8);
         this.npc3 = this.physics.add.sprite(800, 400, 'emma').setScale(0.8);
         this.npc4 = this.physics.add.sprite(3500, 400, 'haley').setScale(0.8);
-        this.npc5 = this.physics.add.sprite(3600, 400, 'frank').setScale(0.8);
+        this.npc5 = this.physics.add.sprite(3650, 400, 'frank').setScale(0.8);
         this.npc5.visible = false;
+        this.npc4.flipX = true;
         this.physics.add.collider(this.npc, this.ground);
         this.physics.add.collider(this.npc2, this.ground);
         this.physics.add.collider(this.npc3, this.ground);
@@ -152,9 +153,9 @@ class Town extends Phaser.Scene{
                 if(Emma != 0){
                     this.scene.start("woodsScene");
                 }else if(this.fcount <1){
-                    this.text01.x = 4000;
+                    this.text01.x = 3900;
                     this.text01.visible = true;
-                    this.text01.loadText("You don't have time to stroll in the woods right now.");
+                    this.text01.loadText("I don't have time to stroll in the woods right now.", "Alex");
                     this.fcount++;
                 }else{
                     this.text01.hideText();
@@ -305,11 +306,11 @@ class Town extends Phaser.Scene{
                 }
             }
         }if(this.checkOverlap(this.player, this.npc5) == true && this.npc5.visible == true){
-            this.f.x = 3600;
+            this.f.x = 3650;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 if(this.fcount<4){
-                    this.text01.x = 3600;
+                    this.text01.x = 3650;
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text3), "Frank");
                     this.fcount++;

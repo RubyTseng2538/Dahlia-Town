@@ -130,6 +130,7 @@ class Woods extends Phaser.Scene{
                     this.text01.boldText(this.text01.switchText(this.fcount, this.texts), this.speaker[this.fcount]);
                     this.fcount++;
                 }else if(Monster == 0 && this.fcount < 19){
+                    this.player.anims.play('idle_left');
                     this.text01.hideText();
                     this.text01.loadText(this.text01.switchText(this.fcount, this.texts), this.speaker[this.fcount]);
                     this.fcount++;
@@ -168,7 +169,8 @@ class Woods extends Phaser.Scene{
         }
 
         if(Simon == 1){
-            this.scene.start("endScene");
+            this.cameras.main.fade(2000);
+            this.fadeOut();
         }
 
         if(this.majortalk == 1){
@@ -186,6 +188,12 @@ class Woods extends Phaser.Scene{
         var boundA = A.getBounds();
         var boundB = B.getBounds();
         return Phaser.Geom.Intersects.RectangleToRectangle(boundA, boundB);
+    }
+
+    fadeOut(){
+        this.time.delayedCall(2000, ()=>{
+                this.scene.start('endScene');
+        });
     }
     
     createAnimation(){
