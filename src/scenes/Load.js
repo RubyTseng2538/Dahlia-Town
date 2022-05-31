@@ -6,20 +6,25 @@ class Load extends Phaser.Scene{
     preload(){
         // set load path
         this.load.path = 'assets/'
-        // load things here
-        this.load.atlas('player_atlas', 'playeratlas2.png', 'playeratlas2.json');
+
+        // load background
         this.load.image('background', 'bg.png');
-        this.load.image('f', 'fkey.png')
-        this.load.image('ground', 'ground.png');
-        this.load.image('textbox', 'textbox.png');
-        this.load.image('factoryentry', 'factoryentry.png');
         this.load.image('factory', 'factory.png');
-        this.load.image('ground2', 'factoryfloor.png');
-        this.load.image('factorydoor', 'factorydoor.png');
-        this.load.image('forestdoor', 'forestdoor.png');
         this.load.image('forest', 'forest.png');
+
+        //load floor
+        this.load.image('ground', 'ground.png');
+        this.load.image('ground2', 'factoryfloor.png');
         this.load.image('ground3', 'forestfloor.png');
-        this.load.image('towndoor', 'towndoor.png');
+
+        //load other
+        this.load.image('f', 'fkey.png');
+        this.load.image('textbox', 'textbox.png');
+        this.load.image('title', 'title.png');
+        this.load.image('fence', 'fence_blood.png');
+        
+        // load character
+        this.load.atlas('player_atlas', 'playeratlas2.png', 'playeratlas2.json');
         this.load.image('brian', 'brian.png');
         this.load.image('carter', 'carter.png');
         this.load.image('frank', 'frank.png');
@@ -27,8 +32,6 @@ class Load extends Phaser.Scene{
         this.load.image('haley', 'haley.png');
         this.load.image('delilah', 'delilah2.png');
         this.load.image('emma', 'emma2.png');
-        this.load.image('title', 'title.png');
-        this.load.image('fence', 'fence_blood.png');
         this.load.image('monster_still', 'monster-1.png');
         this.load.image('simon', 'first_mate.png');
 
@@ -46,6 +49,9 @@ class Load extends Phaser.Scene{
 
         this.load.spritesheet('carter_idle', 'carteridle.png', 
             {frameWidth: 123, frameHeight: 205, startFrame: 0, endFrame: 3});
+
+        this.load.spritesheet('simon_walk', 'first_mate_walk.png', 
+            {frameWidth: 123, frameHeight:205, startFrame:0, endFrame: 11});
         
         //load audio here
         this.load.audio('bg_music', 'music1.mp3');

@@ -12,7 +12,8 @@ class Factory extends Phaser.Scene{
         this.cameras.main.setScroll(0, this.height);
 
         this.add.image(0, 0, 'factory').setOrigin(0);
-        this.door = this.add.image(2040, 0,'factorydoor').setOrigin(0);
+        this.door = this.add.rectangle(2100, 400, 200, 300, 0x000000);
+        this.door.visible = false;
 
         this.ground = this.add.group();
         this.groundSprite = this.physics.add.sprite(1120, this.height-120, 'ground2').setScale(1);

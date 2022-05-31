@@ -12,7 +12,6 @@ class Woods extends Phaser.Scene{
         this.cameras.main.setScroll(0, this.height);
 
         this.add.image(0, 0, 'forest').setOrigin(0);
-        this.town = this.add.image(0, 0, 'towndoor').setOrigin(0);
 
         this.ground = this.add.group();
         this.groundSprite = this.physics.add.sprite(1770, this.height-120, 'ground3').setScale(1);
@@ -44,6 +43,9 @@ class Woods extends Phaser.Scene{
         this.fence.body.immovable = true;
         this.fence.body.allowGravity = false;
         this.physics.add.collider(this.player, this.fence);
+
+        this.town = this.add.rectangle(0, 400, 200, 300, 0x000000);
+        this.town.visible = false;
 
         this.coll = this.add.rectangle(2650, 400, 200, 300, 0x000000);
         this.coll.visible = false;
@@ -177,8 +179,10 @@ class Woods extends Phaser.Scene{
             this.npc.visible = true;
             if(this.npc.x <= 2400){
                 this.npc.body.setVelocityX(200);
+                this.npc.anims.play('simonwalk', true);
             }else{
                 this.npc.body.setVelocityX(0);
+                this.npc.anims.stop();
             }
         }
 
@@ -257,6 +261,13 @@ class Woods extends Phaser.Scene{
             key: 'monster_move',
             frames: this.anims.generateFrameNumbers('monster', {start: 0, end: 10, first: 0}),
             frameRate: 8,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'simonwalk',
+            frames: this.anims.generateFrameNumbers('simon_walk', {start: 0, end: 11, first: 0}),
+            frameRate: 30,
             repeat: -1
         });
     }

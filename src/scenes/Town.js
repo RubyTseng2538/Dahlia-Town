@@ -12,8 +12,11 @@ class Town extends Phaser.Scene{
         this.cameras.main.setScroll(0, this.height);
 
         this.add.image(0, 0, 'background').setOrigin(0);
-        this.factory = this.add.image(0, 0, 'factoryentry').setOrigin(0);
-        this.wood = this.add.image(4350, 0, 'forestdoor').setOrigin(0);
+
+        this.factory = this.add.rectangle(0, 400, 200, 300, 0x000000);
+        this.factory.visible = false;
+        this.wood = this.add.rectangle(4350, 400, 200, 300, 0x000000);
+        this.wood.visible = false;
 
         //add ground
         this.ground = this.add.group();
