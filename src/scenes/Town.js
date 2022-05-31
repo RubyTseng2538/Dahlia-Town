@@ -96,18 +96,18 @@ class Town extends Phaser.Scene{
         "I did hear that something very similar happened to Emma though with her husband. One day he just got up and left town, never was seen again.",
         "I’d talk to Emma about her missing husband John. She might know more than I do. And if there’s anything good, let me know all about it, hehe."];
         this.text8 = ["What’s that? I should stop taking Elevate, but why?",
-            "It turns people into monsters. Well that’s no good at all, is it.",
+            "It turns people into monsters? Well that’s no good at all, is it.",
             "It helps me so much though, maybe I’ll decrease my dose to just 2 a day. Thanks for the help, friend!"];
 
         this.text9 = ["Daddy’s finally come around to letting me take Elevate.",
             "I’m so excited!!!"];
         this.text10 = ["Find out anything about my husband John?",
-            "You think he got turned into a monster and slaughtered?",
+            "You think he turned into a monster and got slaughtered?",
             "Well being a monster sounds like fun, can’t wait to turn into one myself!",
-            "Having sharp claws and big teeth. And being able to run really fast and pick up heavy things with my mouth. Those all sound like pros to me."];
+            "Having sharp claws and big teeth and being able to run really fast and pick up heavy things with my mouth. Those all sound like pros to me."];
         this.text11 = ["*Gasp* Emma’s husband is a horrifically mutated monster because of Elevate!!!",
             "Now that’s the tea I’ve been looking for.",
-            "…Am I worried about turning into a monster? How could I spend any time being worried when I’m still gushing over this new gossip, it’s absolutely delightful.",
+            "…Am I worried about turning into a monster? How could I spend any time being worried when I’m still gushing over this new gossip? It’s absolutely delightful.",
             "Susan will never believe me when I tell her."];
     }
 
@@ -283,7 +283,7 @@ class Town extends Phaser.Scene{
                 if(Carter == 0 && this.fcount<1){
                     this.text01.x = 3500;
                     this.text01.visible = true;
-                    this.text01.loadText("Daddy says I’m not allowed to talk to strangers, but he also says I’m not allowed to eat ice cream in bed so what does he know.", "Haley");
+                    this.text01.loadText("Daddy says I’m not allowed to talk to strangers, but he also says I’m not allowed to eat ice cream in bed, so what does he know.", "Haley");
                     this.fcount++;
                 }else if(Carter == 1 && this.fcount <1 && Monster == 0){
                     this.text01.x = 3500;

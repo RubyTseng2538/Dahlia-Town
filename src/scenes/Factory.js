@@ -46,7 +46,7 @@ class Factory extends Phaser.Scene{
         this.text1 = ["Work is tough, but I do it all for my daughter Haley.", "Hopefully the Elevate I’ve been taking will kick in soon."];
         this.text2 = ["Do I know anything about Elevate?", "Sure I do. I’ve been taking it for months now, it’s an absolutely amazing drug. Completely got rid of my depression. Lately it also feels like it’s been making me get my work done twice as fast!", 
             "I feel as spry as a young gazelle prancing through the fields at full speed.",
-            "Why do you ask? Brian said I had some didn’t he. That motherfucker i knew he’d do something like that, he’s always been a no good –",
+            "Why do you ask? Brian said I had some, didn’t he. That motherfucker, I knew he’d do something like that, he’s always been a no good –",
             "Oh…",
             "He told you I knew where to find some…",
             "…Well in that case yeah I know who sells some. I think he’s actually out on a run for a new client right now.",
@@ -54,10 +54,10 @@ class Factory extends Phaser.Scene{
         this.text3 = ["Where did Carter go? Not sure, he was supposed to be here for the rest of the day.",
             "Why don’t you go ask the people in town if they’ve seen anything."];
         this.text4 = ["Hey! Any luck finding Carter?",
-            "He’s turned into a hideous monster and ran out into the forest!",
+            "He’s turned into a hideous monster and ran out into the forest?!",
             "And my daughter just started taking Elevate too. Thank you so much for letting me know…",
-           "…Am I gonna do anything about it? Well Elevate really works. I mean it’s just begun to really kick in for me and I can’t imagine my life without it now. This work would be just too hard.",
-            "Either way my family ends up starving or monsters, so might as well stay happy doing it."];
+           "…Am I gonna do anything about it? Well, Elevate really works. I mean it’s just begun to really kick in for me and I can’t imagine my life without it now. This work would just be too hard.",
+            "Either way, my family ends up starving or turning into monsters, so might as well stay happy doing it."];
     }
 
     update(){
