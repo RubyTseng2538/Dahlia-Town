@@ -43,7 +43,16 @@ class Woods extends Phaser.Scene{
         this.fence.body.immovable = true;
         this.fence.body.allowGravity = false;
         this.physics.add.collider(this.player, this.fence);
-
+        
+        this.blood1 = this.physics.add.sprite(1100, 500, 'blood1');
+        this.blood1.body.allowGravity = false;
+        this.blood2 = this.physics.add.sprite(1500, 550, 'blood2');
+        this.blood2.body.allowGravity = false;
+        this.blood3 = this.physics.add.sprite(1570, 520, 'blood3');
+        this.blood3.body.allowGravity = false;
+        this.blood4 = this.physics.add.sprite(1900, 540, 'blood4');
+        this.blood4.body.allowGravity = false;
+        
         this.town = this.add.rectangle(0, 400, 200, 300, 0x000000);
         this.town.visible = false;
 

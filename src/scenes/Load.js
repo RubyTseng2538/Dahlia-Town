@@ -22,6 +22,10 @@ class Load extends Phaser.Scene{
         this.load.image('textbox', 'textbox.png');
         this.load.image('title', 'title.png');
         this.load.image('fence', 'fence_blood.png');
+        this.load.image('blood1', 'bloodspatter1.png');
+        this.load.image('blood2', 'bloodspatter2.png');
+        this.load.image('blood3', 'bloodspatter3.png');
+        this.load.image('blood4', 'bloodspatter4.png');
         
         // load character
         this.load.atlas('player_atlas', 'playeratlas2.png', 'playeratlas2.json');
