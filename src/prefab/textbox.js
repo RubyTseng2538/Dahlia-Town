@@ -28,7 +28,7 @@ class Textbox extends Phaser.GameObjects.Sprite{
                 fontSize: '18px',
                 fontFamily: 'Arial',
                 fontStyle: 'bold',
-                color: '#ffffff',
+                color: '#ADD8E6',
                 align: 'left',
                 wordWrap: { width: 900 }
             },

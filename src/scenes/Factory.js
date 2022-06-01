@@ -5,14 +5,15 @@ class Factory extends Phaser.Scene{
     create(){
         this.width = 1280;
         this.height = 720;
-        this.VELOCITY = 1000;
+        this.VELOCITY = 300;
         this.cameras.main.setBackgroundColor('#666');
         this.cameras.main.setBounds(0, 0, 2239, this.height);
         this.cameras.main.setZoom(1);
         this.cameras.main.setScroll(0, this.height);
 
         this.add.image(0, 0, 'factory').setOrigin(0);
-        this.door = this.add.image(2040, 0,'factorydoor').setOrigin(0);
+        this.door = this.add.rectangle(2100, 400, 200, 300, 0x000000);
+        this.door.visible = false;
 
         this.ground = this.add.group();
         this.groundSprite = this.physics.add.sprite(1120, this.height-120, 'ground2').setScale(1);
@@ -26,7 +27,7 @@ class Factory extends Phaser.Scene{
         
         this.createAnimation();
 
-        this.npc1 = this.physics.add.sprite(600, 400, 'carter').setScale(0.8);
+        this.npc1 = this.physics.add.sprite(450, 400, 'carter').setScale(0.8);
         this.npc2 = this.physics.add.sprite(1600, 400, 'greig').setScale(0.8);
         this.player = this.physics.add.sprite(2000, 400, 'player_atlas', 'idle_left_0001').setScale(0.8);
         this.player.body.setCollideWorldBounds(true);
@@ -64,7 +65,7 @@ class Factory extends Phaser.Scene{
         this.npc1.anims.play('carteridle', true);
         if(Frank == 1){
             this.npc1.visible = false;
-            this.npc2.x = 600;
+            this.npc2.x = 450;
         }
         if(Phaser.Input.Keyboard.JustDown(keyM)){
             this.scene.start("menuScene");
@@ -91,21 +92,24 @@ class Factory extends Phaser.Scene{
             this.f.x = 2100;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                this.scene.start("townScene");
+                this.cameras.main.fade(2000);
+                this.time.delayedCall(2000, ()=>{
+                    this.scene.start("townScene");
+                });
             }
         }
         
         if(this.checkOverlap(this.player, this.npc1) == true && this.npc1.visible == true){
-            this.f.x = 600;
+            this.f.x = 450;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 if(this.fcount<1 && Brian == 0){
-                    this.text01.x = 600;
+                    this.text01.x = 700;
                     this.text01.visible = true;
                     this.text01.loadText("Whew! Work is hard but Elevate makes everything easier.", "Carter");
                     this.fcount++;
                 }else if(this.fcount<7 && Brian == 1){
-                    this.text01.x = 600;
+                    this.text01.x = 700;
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text2), "Carter");
                     this.fcount++;
@@ -139,11 +143,11 @@ class Factory extends Phaser.Scene{
                 }
             }
         }if(this.checkOverlap(this.player, this.npc2) == true && this.npc1.visible == false){
-            this.f.x = 600;
+            this.f.x = 450;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 if(this.fcount<1 && Monster == 0){
-                    this.text01.x = 600;
+                    this.text01.x = 700;
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text3), "Greig");
                     this.fcount++;
@@ -152,7 +156,7 @@ class Factory extends Phaser.Scene{
                     this.text01.boldText(this.text01.switchText(this.fcount, this.text3), "Greig");
                     this.fcount++;
                 }else if (this.fcount < 5 && Monster == 1){
-                    this.text01.x = 600;
+                    this.text01.x = 700;
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text4), "Greig");
                     this.fcount++;
@@ -219,7 +223,7 @@ class Factory extends Phaser.Scene{
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 30,
+            frameRate: 15,
             repeat: -1
         });
 
@@ -232,13 +236,6 @@ class Factory extends Phaser.Scene{
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 30,
-            repeat: -1
-        });
-
-        this.anims.create({
-            key: 'char3',
-            frames: this.anims.generateFrameNumbers('char3', {start: 0, end: 11, first: 0}),
             frameRate: 15,
             repeat: -1
         });

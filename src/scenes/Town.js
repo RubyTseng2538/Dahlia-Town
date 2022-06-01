@@ -5,15 +5,18 @@ class Town extends Phaser.Scene{
     create(){
         this.width = 1280;
         this.height = 720;
-        this.VELOCITY = 1000;
+        this.VELOCITY = 300;
         this.cameras.main.setBackgroundColor('#666');
         this.cameras.main.setBounds(0, 0, 4532, this.height);
         this.cameras.main.setZoom(1);
         this.cameras.main.setScroll(0, this.height);
 
         this.add.image(0, 0, 'background').setOrigin(0);
-        this.factory = this.add.image(0, 0, 'factoryentry').setOrigin(0);
-        this.wood = this.add.image(4350, 0, 'forestdoor').setOrigin(0);
+
+        this.factory = this.add.rectangle(0, 400, 200, 300, 0x000000);
+        this.factory.visible = false;
+        this.wood = this.add.rectangle(4350, 400, 200, 300, 0x000000);
+        this.wood.visible = false;
 
         //add ground
         this.ground = this.add.group();
@@ -35,8 +38,9 @@ class Town extends Phaser.Scene{
         this.npc2 = this.physics.add.sprite(2900, 400, 'delilah').setScale(0.8);
         this.npc3 = this.physics.add.sprite(800, 400, 'emma').setScale(0.8);
         this.npc4 = this.physics.add.sprite(3500, 400, 'haley').setScale(0.8);
-        this.npc5 = this.physics.add.sprite(3600, 400, 'frank').setScale(0.8);
+        this.npc5 = this.physics.add.sprite(3650, 400, 'frank').setScale(0.8);
         this.npc5.visible = false;
+        this.npc4.flipX = true;
         this.physics.add.collider(this.npc, this.ground);
         this.physics.add.collider(this.npc2, this.ground);
         this.physics.add.collider(this.npc3, this.ground);
@@ -143,7 +147,10 @@ class Town extends Phaser.Scene{
             this.f.x = 150;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                this.scene.start("factoryScene");
+                this.cameras.main.fade(2000);
+                this.time.delayedCall(2000, ()=>{
+                    this.scene.start("factoryScene");
+                });
             }
         }
         if((this.checkOverlap(this.player, this.wood))){
@@ -151,11 +158,14 @@ class Town extends Phaser.Scene{
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 if(Emma != 0){
-                    this.scene.start("woodsScene");
+                    this.cameras.main.fade(2000);
+                    this.time.delayedCall(2000, ()=>{
+                        this.scene.start("woodsScene");
+                    });
                 }else if(this.fcount <1){
-                    this.text01.x = 4000;
+                    this.text01.x = 3900;
                     this.text01.visible = true;
-                    this.text01.loadText("You don't have time to stroll in the woods right now.");
+                    this.text01.loadText("I don't have time to stroll in the woods right now.", "Alex");
                     this.fcount++;
                 }else{
                     this.text01.hideText();
@@ -306,11 +316,11 @@ class Town extends Phaser.Scene{
                 }
             }
         }if(this.checkOverlap(this.player, this.npc5) == true && this.npc5.visible == true){
-            this.f.x = 3600;
+            this.f.x = 3650;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 if(this.fcount<4){
-                    this.text01.x = 3600;
+                    this.text01.x = 3650;
                     this.text01.visible = true;
                     this.text01.loadText(this.text01.switchText(this.fcount, this.text3), "Frank");
                     this.fcount++;
@@ -382,7 +392,7 @@ class Town extends Phaser.Scene{
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 30,
+            frameRate: 15,
             repeat: -1
         });
 
@@ -395,7 +405,7 @@ class Town extends Phaser.Scene{
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 30,
+            frameRate: 15,
             repeat: -1
         });
 

@@ -5,14 +5,13 @@ class Woods extends Phaser.Scene{
     create(){
         this.width = 1280;
         this.height = 720;
-        this.VELOCITY = 1000;
+        this.VELOCITY = 300;
         this.cameras.main.setBackgroundColor('#666');
         this.cameras.main.setBounds(0, 0, 3537, this.height);
         this.cameras.main.setZoom(1);
         this.cameras.main.setScroll(0, this.height);
 
         this.add.image(0, 0, 'forest').setOrigin(0);
-        this.town = this.add.image(0, 0, 'towndoor').setOrigin(0);
 
         this.ground = this.add.group();
         this.groundSprite = this.physics.add.sprite(1770, this.height-120, 'ground3').setScale(1);
@@ -44,6 +43,9 @@ class Woods extends Phaser.Scene{
         this.fence.body.immovable = true;
         this.fence.body.allowGravity = false;
         this.physics.add.collider(this.player, this.fence);
+
+        this.town = this.add.rectangle(0, 400, 200, 300, 0x000000);
+        this.town.visible = false;
 
         this.coll = this.add.rectangle(2650, 400, 200, 300, 0x000000);
         this.coll.visible = false;
@@ -110,7 +112,10 @@ class Woods extends Phaser.Scene{
             this.f.x = 150;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                this.scene.start("townScene");
+                this.cameras.main.fade(2000);
+                this.time.delayedCall(2000, ()=>{
+                    this.scene.start("townScene");
+                });
             }
         }
 
@@ -124,12 +129,12 @@ class Woods extends Phaser.Scene{
                 this.text01.x = 2550;
                 this.text01.visible = true;
                 if(this.fcount<1){
-                    this.cameras.main.flash(250);
                     this.cameras.main.shake(250);
                     this.text01.hideText();
                     this.text01.boldText(this.text01.switchText(this.fcount, this.texts), this.speaker[this.fcount]);
                     this.fcount++;
                 }else if(Monster == 0 && this.fcount < 19){
+                    this.player.anims.play('idle_left');
                     this.text01.hideText();
                     this.text01.loadText(this.text01.switchText(this.fcount, this.texts), this.speaker[this.fcount]);
                     this.fcount++;
@@ -153,7 +158,7 @@ class Woods extends Phaser.Scene{
                 }else if(Brian ==2 && Greig == 2 && Delilah == 2&& Emma == 2 && Haley == 1 && this.fcount<1){
                     this.text01.x = 2400;
                     this.text01.visible = true;
-                    this.text01.loadText("So you’ve made your decision. What are we gonna do with this thing?", "Simon");
+                    this.text01.loadText("So you’ve made your decision.", "Simon");
                     this.fcount++
 
                 }else{
@@ -168,15 +173,18 @@ class Woods extends Phaser.Scene{
         }
 
         if(Simon == 1){
-            this.scene.start("endScene");
+            this.cameras.main.fade(2000);
+            this.fadeOut();
         }
 
         if(this.majortalk == 1){
             this.npc.visible = true;
             if(this.npc.x <= 2400){
                 this.npc.body.setVelocityX(200);
+                this.npc.anims.play('simonwalk', true);
             }else{
                 this.npc.body.setVelocityX(0);
+                this.npc.anims.stop();
             }
         }
 
@@ -186,6 +194,12 @@ class Woods extends Phaser.Scene{
         var boundA = A.getBounds();
         var boundB = B.getBounds();
         return Phaser.Geom.Intersects.RectangleToRectangle(boundA, boundB);
+    }
+
+    fadeOut(){
+        this.time.delayedCall(2000, ()=>{
+                this.scene.start('endScene');
+        });
     }
     
     createAnimation(){
@@ -228,7 +242,7 @@ class Woods extends Phaser.Scene{
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 30,
+            frameRate: 15,
             repeat: -1
         });
 
@@ -241,7 +255,7 @@ class Woods extends Phaser.Scene{
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 30,
+            frameRate: 15,
             repeat: -1
         });
 
@@ -249,6 +263,13 @@ class Woods extends Phaser.Scene{
             key: 'monster_move',
             frames: this.anims.generateFrameNumbers('monster', {start: 0, end: 10, first: 0}),
             frameRate: 8,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'simonwalk',
+            frames: this.anims.generateFrameNumbers('simon_walk', {start: 0, end: 11, first: 0}),
+            frameRate: 15,
             repeat: -1
         });
     }

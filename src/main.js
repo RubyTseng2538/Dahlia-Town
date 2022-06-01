@@ -28,15 +28,13 @@ let config = {
             }
         }
     },
-    scene: [Load, Menu, Town, Factory, Woods, Credit]
+    backgroundColor: '0x000000',
+    scene: [Load, Menu, Town, Factory, Woods, EndScene, Credit]
 };
 
 let game = new Phaser.Game(config);
 let cursors;
-let keyF, keyN, keyE, keyM;
-let factory = 0;
-let woods = 0;
-let alley = 0;
+let keyF, keyC, keyM;
 let Brian = 0;
 let Carter = 0;
 let Greig = 0;
