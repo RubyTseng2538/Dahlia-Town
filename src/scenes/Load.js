@@ -26,6 +26,9 @@ class Load extends Phaser.Scene{
         this.load.image('blood2', 'bloodspatter2.png');
         this.load.image('blood3', 'bloodspatter3.png');
         this.load.image('blood4', 'bloodspatter4.png');
+        this.load.image('photo', 'photo.png');
+        this.load.image('scratch', 'scratch.png');
+        this.load.image('earringstill', 'earring-1.png');
         
         // load character
         this.load.atlas('player_atlas', 'playeratlas2.png', 'playeratlas2.json');
@@ -56,6 +59,9 @@ class Load extends Phaser.Scene{
 
         this.load.spritesheet('simon_walk', 'first_mate_walk.png', 
             {frameWidth: 123, frameHeight:205, startFrame:0, endFrame: 11});
+        
+        this.load.spritesheet('earring', 'earring.png', 
+            {frameWidth: 36, frameHeight: 15, startFrame: 0, endFrame: 3});
         
         //load audio here
         this.load.audio('bg_music', 'music1.mp3');

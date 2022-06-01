@@ -25,6 +25,8 @@ class Town extends Phaser.Scene{
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
 
+        // debug mode unlocks forest
+        // Emma = 1;
 
         //cursor
         cursors = this.input.keyboard.createCursorKeys();
@@ -47,6 +49,9 @@ class Town extends Phaser.Scene{
         this.physics.add.collider(this.npc4, this.ground);
         this.physics.add.collider(this.npc5, this.ground);
         
+        this.earring = this.physics.add.sprite(3250, 490, 'earringstill');
+        this.earring.body.allowGravity = false;
+
         this.player = this.physics.add.sprite(1550, 400, 'player_atlas', 'idle_right_0001').setScale(0.8);
         this.physics.world.setBounds( 0, 0, 4532, 720);
         this.player.body.setCollideWorldBounds(true);
@@ -119,6 +124,7 @@ class Town extends Phaser.Scene{
         this.npc2.anims.play('char3', true);
         this.npc3.anims.play('char4', true);
         this.npc.anims.play('brianidle', true);
+        this.earring.anims.play('earringsparkle', true);
         if(cursors.left.isDown && this.text01.visible == false) {
             this.player.body.setVelocityX(-this.VELOCITY);
             this.player.anims.play('walk_left', true);
@@ -433,6 +439,13 @@ class Town extends Phaser.Scene{
             frameRate: 4,
             repeat: -1,
             yoyo: false
+        });
+
+        this.anims.create({
+            key: 'earringsparkle',
+            frames: this.anims.generateFrameNumbers('earring', {start: 0, end: 3, first: 0}),
+            frameRate: 4,
+            repeat: -1,
         });
     }
 }
