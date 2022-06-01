@@ -147,7 +147,10 @@ class Town extends Phaser.Scene{
             this.f.x = 150;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                this.scene.start("factoryScene");
+                this.cameras.main.fade(2000);
+                this.time.delayedCall(2000, ()=>{
+                    this.scene.start("factoryScene");
+                });
             }
         }
         if((this.checkOverlap(this.player, this.wood))){
@@ -155,7 +158,10 @@ class Town extends Phaser.Scene{
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 if(Emma != 0){
-                    this.scene.start("woodsScene");
+                    this.cameras.main.fade(2000);
+                    this.time.delayedCall(2000, ()=>{
+                        this.scene.start("woodsScene");
+                    });
                 }else if(this.fcount <1){
                     this.text01.x = 3900;
                     this.text01.visible = true;
@@ -386,7 +392,7 @@ class Town extends Phaser.Scene{
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 30,
+            frameRate: 15,
             repeat: -1
         });
 
@@ -399,7 +405,7 @@ class Town extends Phaser.Scene{
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 30,
+            frameRate: 15,
             repeat: -1
         });
 

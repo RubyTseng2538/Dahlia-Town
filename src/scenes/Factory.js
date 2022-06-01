@@ -92,7 +92,10 @@ class Factory extends Phaser.Scene{
             this.f.x = 2100;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                this.scene.start("townScene");
+                this.cameras.main.fade(2000);
+                this.time.delayedCall(2000, ()=>{
+                    this.scene.start("townScene");
+                });
             }
         }
         
@@ -220,7 +223,7 @@ class Factory extends Phaser.Scene{
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 30,
+            frameRate: 15,
             repeat: -1
         });
 
@@ -233,13 +236,6 @@ class Factory extends Phaser.Scene{
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 30,
-            repeat: -1
-        });
-
-        this.anims.create({
-            key: 'char3',
-            frames: this.anims.generateFrameNumbers('char3', {start: 0, end: 11, first: 0}),
             frameRate: 15,
             repeat: -1
         });

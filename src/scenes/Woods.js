@@ -112,7 +112,10 @@ class Woods extends Phaser.Scene{
             this.f.x = 150;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                this.scene.start("townScene");
+                this.cameras.main.fade(2000);
+                this.time.delayedCall(2000, ()=>{
+                    this.scene.start("townScene");
+                });
             }
         }
 
@@ -126,7 +129,6 @@ class Woods extends Phaser.Scene{
                 this.text01.x = 2550;
                 this.text01.visible = true;
                 if(this.fcount<1){
-                    this.cameras.main.flash(250);
                     this.cameras.main.shake(250);
                     this.text01.hideText();
                     this.text01.boldText(this.text01.switchText(this.fcount, this.texts), this.speaker[this.fcount]);
@@ -156,7 +158,7 @@ class Woods extends Phaser.Scene{
                 }else if(Brian ==2 && Greig == 2 && Delilah == 2&& Emma == 2 && Haley == 1 && this.fcount<1){
                     this.text01.x = 2400;
                     this.text01.visible = true;
-                    this.text01.loadText("So you’ve made your decision. What are we gonna do with this thing?", "Simon");
+                    this.text01.loadText("So you’ve made your decision.", "Simon");
                     this.fcount++
 
                 }else{
@@ -240,7 +242,7 @@ class Woods extends Phaser.Scene{
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 30,
+            frameRate: 15,
             repeat: -1
         });
 
@@ -253,7 +255,7 @@ class Woods extends Phaser.Scene{
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 30,
+            frameRate: 15,
             repeat: -1
         });
 
@@ -267,7 +269,7 @@ class Woods extends Phaser.Scene{
         this.anims.create({
             key: 'simonwalk',
             frames: this.anims.generateFrameNumbers('simon_walk', {start: 0, end: 11, first: 0}),
-            frameRate: 30,
+            frameRate: 15,
             repeat: -1
         });
     }
