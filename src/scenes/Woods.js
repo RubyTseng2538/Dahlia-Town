@@ -5,7 +5,7 @@ class Woods extends Phaser.Scene{
     create(){
         this.width = 1280;
         this.height = 720;
-        this.VELOCITY = 1000;
+        this.VELOCITY = 300;
         this.cameras.main.setBackgroundColor('#666');
         this.cameras.main.setBounds(0, 0, 3537, this.height);
         this.cameras.main.setZoom(1);
