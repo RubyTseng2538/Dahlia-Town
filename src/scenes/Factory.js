@@ -63,6 +63,7 @@ class Factory extends Phaser.Scene{
 
     update(){
         this.npc1.anims.play('carteridle', true);
+        this.npc2.anims.play('greigidle', true);
         if(Frank == 1){
             this.npc1.visible = false;
             this.npc2.x = 450;
@@ -246,5 +247,12 @@ class Factory extends Phaser.Scene{
             frameRate: 4,
             repeat: -1
         })
+
+        this.anims.create({
+            key: 'greigidle',
+            frames: this.anims.generateFrameNumbers('greig_idle', {start: 0, end: 3, first: 0}),
+            frameRate: 4,
+            repeat: -1
+        });
     }
 }

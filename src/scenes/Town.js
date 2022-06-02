@@ -99,7 +99,7 @@ class Town extends Phaser.Scene{
             "You should check the forest for clues about Carter."];
         this.text6 = ["Sure I know about Elevate, but what you really want to know about is how every day at 6am on the dot, Brian leaves his house to go somewhere.",
             "Sure it might be to go to work, but that’s too simple. I think he has a secret lover in the neighboring town.",
-            "Why do I think that? Well the smell of steak and womens perfume on his clothes slaps me in the face every time I’m about to hop into bed. And boy does that steak smell expensive.",
+            "Why do I think that? Well the smell of steak and women's perfume on his clothes slaps me in the face every time I’m about to hop into bed. And boy does that steak smell expensive.",
             "You didn’t hear that from me though."];
         this.text7 = ["What’s that you say? Carter’s gone missing? Now that’s some juicy gossip! Sorry, I haven't heard anything about Carter though.",
         "I did hear that something very similar happened to Emma though with her husband. One day he just got up and left town, never was seen again.",
@@ -124,6 +124,9 @@ class Town extends Phaser.Scene{
         this.npc2.anims.play('char3', true);
         this.npc3.anims.play('char4', true);
         this.npc.anims.play('brianidle', true);
+        this.npc4.anims.play('haleyidle', true);
+        this.npc5.anims.play('frankidle', true);
+
         this.earring.anims.play('earringsparkle', true);
         if(cursors.left.isDown && this.text01.visible == false) {
             this.player.body.setVelocityX(-this.VELOCITY);
@@ -369,7 +372,7 @@ class Town extends Phaser.Scene{
             }),
             frameRate: 15,
             repeat: -1,
-            repeatDelay: 5000,
+            // repeatDelay: 5000,
             yoyo: false
         });
 
@@ -385,7 +388,7 @@ class Town extends Phaser.Scene{
             }),
             frameRate: 15,
             repeat: -1,
-            repeatDelay: 5000,
+            // repeatDelay: 5000,
             yoyo: false
         });
 
@@ -439,6 +442,20 @@ class Town extends Phaser.Scene{
             frameRate: 4,
             repeat: -1,
             yoyo: false
+        });
+
+        this.anims.create({
+            key: 'frankidle',
+            frames: this.anims.generateFrameNumbers('frank_idle', {start: 0, end: 5, first: 0}),
+            frameRate: 4,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'haleyidle',
+            frames: this.anims.generateFrameNumbers('haley_idle', {start: 0, end: 3, first: 0}),
+            frameRate: 7,
+            repeat: -1
         });
 
         this.anims.create({

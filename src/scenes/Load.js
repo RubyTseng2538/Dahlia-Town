@@ -31,7 +31,7 @@ class Load extends Phaser.Scene{
         this.load.image('earringstill', 'earring-1.png');
         
         // load character
-        this.load.atlas('player_atlas', 'playeratlas2.png', 'playeratlas2.json');
+        this.load.atlas('player_atlas', 'playeratlasbob.png', 'playeratlasbob.json');
         this.load.image('brian', 'brian.png');
         this.load.image('carter', 'carter.png');
         this.load.image('frank', 'frank.png');
@@ -55,6 +55,15 @@ class Load extends Phaser.Scene{
             {frameWidth: 123, frameHeight: 205, startFrame: 0, endFrame: 3});
 
         this.load.spritesheet('carter_idle', 'carteridle.png', 
+            {frameWidth: 123, frameHeight: 205, startFrame: 0, endFrame: 3});
+
+        this.load.spritesheet('frank_idle', 'frankidle.png', 
+            {frameWidth: 123, frameHeight: 205, startFrame: 0, endFrame: 5});
+
+        this.load.spritesheet('greig_idle', 'greigidle.png', 
+            {frameWidth: 123, frameHeight: 205, startFrame: 0, endFrame: 3});
+
+        this.load.spritesheet('haley_idle', 'haleyidle.png', 
             {frameWidth: 123, frameHeight: 205, startFrame: 0, endFrame: 3});
 
         this.load.spritesheet('simon_walk', 'first_mate_walk.png', 
