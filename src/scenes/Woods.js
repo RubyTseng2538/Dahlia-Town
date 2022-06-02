@@ -74,6 +74,18 @@ class Woods extends Phaser.Scene{
         this.text01.visible = false;
         this.fcount = 0;
 
+        let musicConfig = {
+            mute: false,
+            volume: 1,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay: 0
+        }
+
+        this.roar = this.sound.add('roar', musicConfig);
+
         this.speaker = ["Monster", "Alex", "???", "???", "Alex", "Simon", "Alex", "Simon", 
         "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex"];
 
@@ -152,6 +164,7 @@ class Woods extends Phaser.Scene{
                 this.text01.visible = true;
                 if(this.fcount<1){
                     this.cameras.main.shake(250);
+                    this.roar.play();
                     this.text01.hideText();
                     this.text01.boldText(this.text01.switchText(this.fcount, this.texts), this.speaker[this.fcount]);
                     this.fcount++;

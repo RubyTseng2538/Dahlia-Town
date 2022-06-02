@@ -7,6 +7,7 @@ class Textbox extends Phaser.GameObjects.Sprite{
         this.catName = "";
         this.content = "";
         this.cur = [];
+        this.beep = scene.sound.add('speak1');
         this.msg = scene.make.text({
             x: this.x -450,
             y: this.y -30,
@@ -59,6 +60,7 @@ class Textbox extends Phaser.GameObjects.Sprite{
         this.msg.x = this.x - 450;
         this.content = string;
         this.msg.text = this.content;
+        //this.beep.play();
     }
 
     boldText(string, name){
@@ -70,6 +72,7 @@ class Textbox extends Phaser.GameObjects.Sprite{
         this.msg2.x = this.x - 450;
         this.content = string;
         this.msg2.text = this.content;
+        //this.beep.play();
     }
 
     hideText(){

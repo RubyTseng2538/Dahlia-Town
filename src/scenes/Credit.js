@@ -7,7 +7,7 @@ class Credit extends Phaser.Scene{
         let creditConfig = {
             fontFamily: 'Georgia',
             fontSize: '36px',
-            color: '#ffffff',
+            color: '#000000',
             align: 'center',
             padding: {
                 top: 5,
@@ -18,7 +18,7 @@ class Credit extends Phaser.Scene{
         let creditConfig2 = {
             fontFamily: 'Georgia',
             fontSize: '28px',
-            color: '#ffffff',
+            color: '#000000',
             align: 'center',
             padding: {
                 top: 5,
@@ -26,6 +26,7 @@ class Credit extends Phaser.Scene{
             },
             fixWidth: 0
         }
+        this.add.image(0, 0, 'credit').setOrigin(0);
         this.add.text(game.config.width/2, game.config.height/2 -100, 'Credit', creditConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 -50, 'Design: Patrick Queiroz', creditConfig2).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 -10, 'Code: Ruby Tseng', creditConfig2).setOrigin(0.5);

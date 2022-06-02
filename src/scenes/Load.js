@@ -21,6 +21,7 @@ class Load extends Phaser.Scene{
         this.load.image('f', 'fkey.png');
         this.load.image('textbox', 'textbox.png');
         this.load.image('title', 'title.png');
+        this.load.image('credit', 'credit.png');
         this.load.image('fence', 'fence_blood.png');
         this.load.image('blood1', 'bloodspatter1.png');
         this.load.image('blood2', 'bloodspatter2.png');
@@ -80,6 +81,9 @@ class Load extends Phaser.Scene{
         
         //load audio here
         this.load.audio('bg_music', 'music1.mp3');
+        this.load.audio('roar', 'Roar_2.wav');
+        this.load.audio('speak1', 'Button_A.wav');
+        this.load.audio('speak2', 'Button_B.wav');
     }
 
     create() {
