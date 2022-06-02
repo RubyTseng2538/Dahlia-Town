@@ -5,7 +5,7 @@ class Factory extends Phaser.Scene{
     create(){
         this.width = 1280;
         this.height = 720;
-        this.VELOCITY = 300;
+        this.VELOCITY = 500;
         this.cameras.main.setBackgroundColor('#666');
         this.cameras.main.setBounds(0, 0, 2239, this.height);
         this.cameras.main.setZoom(1);

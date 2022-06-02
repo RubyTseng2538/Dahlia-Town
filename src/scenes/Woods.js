@@ -5,7 +5,7 @@ class Woods extends Phaser.Scene{
     create(){
         this.width = 1280;
         this.height = 720;
-        this.VELOCITY = 300;
+        this.VELOCITY = 500;
         this.cameras.main.setBackgroundColor('#666');
         this.cameras.main.setBounds(0, 0, 3537, this.height);
         this.cameras.main.setZoom(1);
@@ -58,6 +58,10 @@ class Woods extends Phaser.Scene{
         this.photo = this.physics.add.sprite(1000, 510, 'photo');
         this.photo.body.allowGravity = false;
         
+        this.rec1 = this.add.rectangle(700, 400, 200, 300);
+        this.rec2 = this.add.rectangle(1000, 400, 200, 300);
+        //this.rec3 = this.add.rectangle();
+
         this.town = this.add.rectangle(0, 400, 200, 300, 0x000000);
         this.town.visible = false;
 
@@ -100,6 +104,10 @@ class Woods extends Phaser.Scene{
         this.majortalk = 0;
     }
     update(){
+        if(Phaser.Input.Keyboard.JustDown(keyM)){
+            this.scene.start("menuScene");
+        }
+        
         if(cursors.left.isDown && this.text01.visible == false) {
             this.player.body.setVelocityX(-this.VELOCITY);
             this.player.anims.play('walk_left', true);
@@ -186,6 +194,40 @@ class Woods extends Phaser.Scene{
             }
         }
 
+        if(this.checkOverlap(this.player, this.rec1)){
+            this.f.x = 700;
+            this.f.visible = true;
+            if(Phaser.Input.Keyboard.JustDown(keyF)){
+                if(this.fcount <1){
+                    this.text01.x = 700;
+                    this.text01.visible = true;
+                    this.text01.loadText("Deep gouges in the bark of the tree. The tearing around the edges says it probably wasn't a blade.", "Alex");
+                    this.fcount++;
+                }else{
+                    this.text01.hideText();
+                    this.text01.visible = false;
+                    this.fcount = 0;
+                }
+            }
+        }
+
+        if(this.checkOverlap(this.player, this.rec2)){
+            this.f.x = 1000;
+            this.f.visible = true;
+            if(Phaser.Input.Keyboard.JustDown(keyF)){
+                if(this.fcount <1){
+                    this.text01.x = 1000;
+                    this.text01.visible = true;
+                    this.text01.loadText("A photo of Emma and someone. Judging from the stains, it was dropped here a long time ago.", "Alex");
+                    this.fcount++;
+                }else{
+                    this.text01.hideText();
+                    this.text01.visible = false;
+                    this.fcount = 0;
+                }
+            }
+        }
+
         if(Simon == 1){
             this.cameras.main.fade(2000);
             this.fadeOut();
@@ -200,6 +242,9 @@ class Woods extends Phaser.Scene{
                 this.npc.body.setVelocityX(0);
                 this.npc.anims.play('simonidle', true);
             }
+        }
+        if(!(this.checkOverlap(this.player, this.npc) && this.npc.visible == true) && !this.checkOverlap(this.player, this.town) && !this.checkOverlap(this.player, this.rec1) && !this.checkOverlap(this.player, this.rec2) && !this.checkOverlap(this.player, this.coll)){
+            this.f.visible = false;
         }
 
     }

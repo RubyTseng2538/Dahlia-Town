@@ -5,7 +5,7 @@ class Town extends Phaser.Scene{
     create(){
         this.width = 1280;
         this.height = 720;
-        this.VELOCITY = 300;
+        this.VELOCITY = 500;
         this.cameras.main.setBackgroundColor('#666');
         this.cameras.main.setBounds(0, 0, 4532, this.height);
         this.cameras.main.setZoom(1);
@@ -13,10 +13,10 @@ class Town extends Phaser.Scene{
 
         this.add.image(0, 0, 'background').setOrigin(0);
 
-        this.factory = this.add.rectangle(0, 400, 200, 300, 0x000000);
-        this.factory.visible = false;
-        this.wood = this.add.rectangle(4350, 400, 200, 300, 0x000000);
-        this.wood.visible = false;
+        this.factory = this.add.rectangle(0, 400, 200, 300);
+        this.wood = this.add.rectangle(4350, 400, 200, 300);
+
+        this.rec1 = this.add.rectangle(3250, 400, 100, 300);
 
         //add ground
         this.ground = this.add.group();
@@ -61,7 +61,7 @@ class Town extends Phaser.Scene{
         
         let musicConfig = {
             mute: false,
-            volume: 0.2,
+            volume: 0.5,
             rate: 1,
             detune: 0,
             seek: 0,
@@ -166,12 +166,12 @@ class Town extends Phaser.Scene{
             this.f.x = 4350;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                if(Emma != 0){
+                /*if(Emma != 0){*/
                     this.cameras.main.fade(2000);
                     this.time.delayedCall(2000, ()=>{
                         this.scene.start("woodsScene");
                     });
-                }else if(this.fcount <1){
+                /*}else if(this.fcount <1){
                     this.text01.x = 3900;
                     this.text01.visible = true;
                     this.text01.loadText("I don't have time to stroll in the woods right now.", "Alex");
@@ -180,7 +180,7 @@ class Town extends Phaser.Scene{
                     this.text01.hideText();
                     this.text01.visible = false;
                     this.fcount = 0;
-                }
+                }*/
             }
         }
         if(this.checkOverlap(this.player, this.npc) == true){
@@ -344,9 +344,25 @@ class Town extends Phaser.Scene{
                     Frank = 1;
                 }
             }
+        }if(this.checkOverlap(this.player, this.rec1)){
+            this.f.x = 3250;
+            this.f.visible = true;
+            if(Phaser.Input.Keyboard.JustDown(keyF)){
+                if(this.fcount<1){
+                    this.text01.x = 3250;
+                    this.text01.visible = true;
+                    this.text01.loadText("A familiar-looking blue earring, one of a matching pair.", "Alex");
+                    this.fcount++;
+                }else{
+                    this.text01.hideText();
+                    this.text01.visible = false;
+                    this.fcount = 0;
+                }
+            }
         }
+
         
-        if(!this.checkOverlap(this.player, this.npc) && !this.checkOverlap(this.player, this.factory) && !this.checkOverlap(this.player, this.npc4) && !(this.checkOverlap(this.player, this.npc5)&& this.npc5.visible == true) && !this.checkOverlap(this.player, this.npc2) && !this.checkOverlap(this.player, this.npc3) && !this.checkOverlap(this.player, this.wood)){
+        if(!this.checkOverlap(this.player, this.npc) && !this.checkOverlap(this.player, this.factory) && !this.checkOverlap(this.player, this.npc4) && !(this.checkOverlap(this.player, this.npc5)&& this.npc5.visible == true) && !this.checkOverlap(this.player, this.npc2) && !this.checkOverlap(this.player, this.npc3) && !this.checkOverlap(this.player, this.wood) && !this.checkOverlap(this.player, this.rec1)){
             this.f.visible = false;
         }if(Phaser.Input.Keyboard.JustDown(keyM)){
             this.scene.start("menuScene");
