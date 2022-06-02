@@ -28,6 +28,9 @@ class Woods extends Phaser.Scene{
         this.npc = this.physics.add.sprite(1800, 400, 'simon').setScale(0.8);
         this.npc.visible = false;
         this.physics.add.collider(this.npc, this.ground);
+        
+        this.scratch = this.physics.add.sprite(700, 300, 'scratch');
+        this.scratch.body.allowGravity = false;
 
         this.player = this.physics.add.sprite(200, 400, 'player_atlas', 'idle_right_0001').setScale(0.8);
         this.physics.world.setBounds( 0, 0, 3537, 720);
@@ -52,8 +55,6 @@ class Woods extends Phaser.Scene{
         this.blood3.body.allowGravity = false;
         this.blood4 = this.physics.add.sprite(1900, 540, 'blood4');
         this.blood4.body.allowGravity = false;
-        this.scratch = this.physics.add.sprite(700, 300, 'scratch');
-        this.scratch.body.allowGravity = false;
         this.photo = this.physics.add.sprite(1000, 510, 'photo');
         this.photo.body.allowGravity = false;
         
@@ -197,7 +198,7 @@ class Woods extends Phaser.Scene{
                 this.npc.anims.play('simonwalk', true);
             }else{
                 this.npc.body.setVelocityX(0);
-                this.npc.anims.stop();
+                this.npc.anims.play('simonidle', true);
             }
         }
 
@@ -283,6 +284,13 @@ class Woods extends Phaser.Scene{
             key: 'simonwalk',
             frames: this.anims.generateFrameNumbers('simon_walk', {start: 0, end: 11, first: 0}),
             frameRate: 15,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'simonidle',
+            frames: this.anims.generateFrameNumbers('simon_idle', {start: 0, end: 3, first: 0}),
+            frameRate: 4,
             repeat: -1
         });
     }

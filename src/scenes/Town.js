@@ -121,8 +121,8 @@ class Town extends Phaser.Scene{
     }
 
     update(){
-        this.npc2.anims.play('char3', true);
-        this.npc3.anims.play('char4', true);
+        this.npc2.anims.play('delilahidle', true);
+        this.npc3.anims.play('emmaidle', true);
         this.npc.anims.play('brianidle', true);
         this.npc4.anims.play('haleyidle', true);
         this.npc5.anims.play('frankidle', true);
@@ -419,20 +419,18 @@ class Town extends Phaser.Scene{
         });
 
         this.anims.create({
-            key: 'char3',
+            key: 'delilahidle',
             frames: this.anims.generateFrameNumbers('char3', {start: 0, end: 11, first: 0}),
-            frameRate: 10,
+            frameRate: 8,
             repeat: -1,
-            repeatDelay: 3000,
             yoyo: false
         });
 
         this.anims.create({
-            key: 'char4',
+            key: 'emmaidle',
             frames: this.anims.generateFrameNumbers('char4', {start: 0, end: 3, first: 0}),
-            frameRate: 10,
+            frameRate: 6,
             repeat: -1,
-            repeatDelay: 1000,
             yoyo: false
         });
 
@@ -464,5 +462,12 @@ class Town extends Phaser.Scene{
             frameRate: 4,
             repeat: -1,
         });
+
+        this.anims.create({
+            key: 'fkeybob',
+            frames: this.anims.generateFrameNumbers('fkeybob', {start: 0, end: 3, first: 0}),
+            frameRate: 4,
+            repeat: -1,
+        })
     }
 }
