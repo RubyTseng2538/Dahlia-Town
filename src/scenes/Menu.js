@@ -28,7 +28,7 @@ class Menu extends Phaser.Scene{
             this.scene.start("townScene");
         }
         if(Phaser.Input.Keyboard.JustDown(keyC)){
-            this.scene.start("endScene");
+            this.scene.start("creditScene");
         }
     }
 }
