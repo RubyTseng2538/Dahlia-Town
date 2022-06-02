@@ -12,8 +12,8 @@ class Textbox extends Phaser.GameObjects.Sprite{
             y: this.y -30,
             text: this.content,
             style: {
-                fontSize: '18px',
-                fontFamily: 'Arial',
+                fontSize: '20px',
+                fontFamily: 'Georgia',
                 fontStyle: '',
                 color: '#ffffff',
                 align: 'left',
@@ -25,8 +25,8 @@ class Textbox extends Phaser.GameObjects.Sprite{
             y: this.y -30,
             text: this.content,
             style: {
-                fontSize: '18px',
-                fontFamily: 'Arial',
+                fontSize: '20px',
+                fontFamily: 'Georgia',
                 fontStyle: 'bold',
                 color: '#ADD8E6',
                 align: 'left',
@@ -38,8 +38,8 @@ class Textbox extends Phaser.GameObjects.Sprite{
             y: this.y -70,
             text: this.catName,
             style: {
-                fontSize: '24px',
-                fontFamily: 'Arial',
+                fontSize: '26px',
+                fontFamily: 'Georgia',
                 color: '#ffffff',
                 align: 'left',
                 wordWrap: { width: 900 }

@@ -5,7 +5,7 @@ class EndScene extends Phaser.Scene{
 
     create(){
         let menuConfig = {
-            fontFamily: 'monospace',
+            fontFamily: 'Georgia',
             fontSize: '36px',
             color: '#ffffff',
             align: 'center',
@@ -16,7 +16,7 @@ class EndScene extends Phaser.Scene{
             fixedWidth: 0
         }
         let menuConfig2 = {
-            fontFamily: 'monospace',
+            fontFamily: 'Georgia',
             fontSize: '28px',
             color: '#ffffff',
             align: 'center',

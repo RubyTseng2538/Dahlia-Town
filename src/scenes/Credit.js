@@ -5,7 +5,7 @@ class Credit extends Phaser.Scene{
 
     create(){
         let creditConfig = {
-            fontFamily: 'monospace',
+            fontFamily: 'Georgia',
             fontSize: '36px',
             color: '#ffffff',
             align: 'center',
@@ -16,7 +16,7 @@ class Credit extends Phaser.Scene{
             fixWidth: 0
         }
         let creditConfig2 = {
-            fontFamily: 'monospace',
+            fontFamily: 'Georgia',
             fontSize: '28px',
             color: '#ffffff',
             align: 'center',
