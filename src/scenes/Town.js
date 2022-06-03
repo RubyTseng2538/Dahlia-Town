@@ -58,6 +58,16 @@ class Town extends Phaser.Scene{
         this.player.body.onWorldBounds = true;   
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.ground);
+
+        //player position
+        if(factory == 1){
+            this.player.x = 150;
+            factory = 0;
+        }else if (forest == 1){
+            this.player.x = 4300;
+            this.player.anims.play('idle_left');
+            forest = 0;
+        }
         
         let musicConfig = {
             mute: false,

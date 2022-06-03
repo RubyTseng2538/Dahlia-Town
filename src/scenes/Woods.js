@@ -87,7 +87,7 @@ class Woods extends Phaser.Scene{
         this.roar = this.sound.add('roar', musicConfig);
 
         this.speaker = ["Monster", "Alex", "???", "???", "Alex", "Simon", "Alex", "Simon", 
-        "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex"];
+        "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex", "Simon", "Alex"];
 
         this.texts = ["RaaAaaAwwwWrrRrrrrrrr!!!!!",
             "Oh my God... What the hell is that thing?",
@@ -107,7 +107,8 @@ class Woods extends Phaser.Scene{
             "Wait! Before you go, what do you want me to do with this thing?",
             "You mean Carter? What do you usually do?",
             "Usually we catch ‘em once they sneak off into the woods, like we did here, and take ‘em out before anyone can notice. Keeps everything a little more under the radar.",
-            "Jesus Christ."];
+            "Jesus Christ.",
+            "How about you go do your survey, then come back to me to make your decision?", "Alright, I’ll come back to you once I’ve told everyone in town what’s going on with Elevate."];
 
         if(Monster == 1){
             this.npc.x = 2400;
@@ -146,6 +147,7 @@ class Woods extends Phaser.Scene{
             this.f.x = 150;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
+                forest = 1;
                 this.cameras.main.fade(2000);
                 this.time.delayedCall(2000, ()=>{
                     this.scene.start("townScene");
@@ -172,6 +174,10 @@ class Woods extends Phaser.Scene{
                     this.player.anims.play('idle_left');
                     this.text01.hideText();
                     this.text01.loadText(this.text01.switchText(this.fcount, this.texts), this.speaker[this.fcount]);
+                    this.fcount++;
+                }else if(Monster == 0 && this.fcount <21){
+                    this.text01.hideText();
+                    this.text01.boldText(this.text01.switchText(this.fcount, this.texts), this.speaker[this.fcount]);
                     this.fcount++;
                 }else{
                     this.text01.hideText();
@@ -269,7 +275,7 @@ class Woods extends Phaser.Scene{
     }
 
     fadeOut(){
-        this.time.delayedCall(2000, ()=>{
+        this.time.delayedCall(1900, ()=>{
                 this.scene.start('endScene');
         });
     }

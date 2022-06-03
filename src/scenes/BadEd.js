@@ -27,7 +27,7 @@ class EndScene extends Phaser.Scene{
             fixedWidth: 0
         }
 
-        this.add.text(game.config.width/2, game.config.height/2, 'What should we do from now on?', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2, 'What should we do from here?', menuConfig).setOrigin(0.5);
         this.time.delayedCall(6000, ()=>{
             this.add.text(game.config.width/2, game.config.height/2 + 100, 'Press M to go back to menu', menuConfig2).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2 + 130, 'Press C for credit', menuConfig2).setOrigin(0.5);

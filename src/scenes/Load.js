@@ -80,7 +80,7 @@ class Load extends Phaser.Scene{
             {frameWidth: 90, frameHeight: 90, startFrame: 0, endFrame: 3});
         
         //load audio here
-        this.load.audio('bg_music', 'music1.mp3');
+        this.load.audio('bg_music', 'music.wav');
         this.load.audio('roar', 'Roar_3.wav');
         this.load.audio('speak1', 'Button_A.wav');
         this.load.audio('speak2', 'Button_B.wav');
