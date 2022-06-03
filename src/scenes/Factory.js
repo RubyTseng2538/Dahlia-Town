@@ -93,8 +93,8 @@ class Factory extends Phaser.Scene{
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 factory = 1;
-                this.cameras.main.fade(2000);
-                this.time.delayedCall(2000, ()=>{
+                this.cameras.main.fade(500);
+                this.time.delayedCall(400, ()=>{
                     this.scene.start("townScene");
                 });
             }

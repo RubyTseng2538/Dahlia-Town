@@ -19,6 +19,7 @@ class Menu extends Phaser.Scene{
         this.add.text(game.config.width/2, game.config.height -100, 'Press F to start', menuConfig).setOrigin(0.5);
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         this.sound.stopByKey('bg_music');
         play = false;
     }
@@ -28,7 +29,7 @@ class Menu extends Phaser.Scene{
             this.scene.start("townScene");
         }
         if(Phaser.Input.Keyboard.JustDown(keyC)){
-            this.scene.start("creditScene");
+            this.scene.start("endScene");
         }
     }
 }

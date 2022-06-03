@@ -13,7 +13,7 @@ class Town extends Phaser.Scene{
 
         this.add.image(0, 0, 'background').setOrigin(0);
 
-        this.factory = this.add.rectangle(0, 400, 200, 300);
+        this.factory = this.add.rectangle(0, 400, 400, 300);
         this.wood = this.add.rectangle(4350, 400, 200, 300);
 
         this.rec1 = this.add.rectangle(3250, 400, 100, 300);
@@ -71,7 +71,7 @@ class Town extends Phaser.Scene{
         
         let musicConfig = {
             mute: false,
-            volume: 0.2,
+            volume: 0.5,
             rate: 1,
             detune: 0,
             seek: 0,
@@ -167,8 +167,8 @@ class Town extends Phaser.Scene{
             this.f.x = 150;
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
-                this.cameras.main.fade(2000);
-                this.time.delayedCall(2000, ()=>{
+                this.cameras.main.fade(500);
+                this.time.delayedCall(400, ()=>{
                     this.scene.start("factoryScene");
                 });
             }
@@ -178,8 +178,8 @@ class Town extends Phaser.Scene{
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 if(Emma != 0){
-                    this.cameras.main.fade(2000);
-                    this.time.delayedCall(2000, ()=>{
+                    this.cameras.main.fade(500);
+                    this.time.delayedCall(400, ()=>{
                         this.scene.start("woodsScene");
                     });
                 }else if(this.fcount <1){

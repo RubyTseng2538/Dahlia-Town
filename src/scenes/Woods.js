@@ -76,7 +76,7 @@ class Woods extends Phaser.Scene{
 
         let musicConfig = {
             mute: false,
-            volume: 1,
+            volume: 0.7,
             rate: 1,
             detune: 0,
             seek: 0,
@@ -148,8 +148,8 @@ class Woods extends Phaser.Scene{
             this.f.visible = true;
             if(Phaser.Input.Keyboard.JustDown(keyF)){
                 forest = 1;
-                this.cameras.main.fade(2000);
-                this.time.delayedCall(2000, ()=>{
+                this.cameras.main.fade(500);
+                this.time.delayedCall(400, ()=>{
                     this.scene.start("townScene");
                 });
             }
@@ -248,7 +248,7 @@ class Woods extends Phaser.Scene{
         }
 
         if(Simon == 1){
-            this.cameras.main.fade(2000);
+            this.cameras.main.fade(3000);
             this.fadeOut();
         }
 
@@ -275,7 +275,7 @@ class Woods extends Phaser.Scene{
     }
 
     fadeOut(){
-        this.time.delayedCall(1900, ()=>{
+        this.time.delayedCall(2900, ()=>{
                 this.scene.start('endScene');
         });
     }

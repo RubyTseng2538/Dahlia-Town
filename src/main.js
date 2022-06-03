@@ -23,7 +23,7 @@ let config = {
 
 let game = new Phaser.Game(config);
 let cursors;
-let keyF, keyC, keyM;
+let keyF, keyC, keyM, keyW;
 let forest = 0;
 let factory = 0;
 let Brian = 0;
