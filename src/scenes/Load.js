@@ -81,7 +81,7 @@ class Load extends Phaser.Scene{
         
         //load audio here
         this.load.audio('bg_music', 'music1.mp3');
-        this.load.audio('roar', 'Roar_2.wav');
+        this.load.audio('roar', 'Roar_3.wav');
         this.load.audio('speak1', 'Button_A.wav');
         this.load.audio('speak2', 'Button_B.wav');
     }
